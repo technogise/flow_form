@@ -1,0 +1,60 @@
+{
+  "Personal details": {
+    "section one": {
+      "fieldId": ["ask-name","occupation-2019", "30-percent-ruling-2019", "passport-details","own-property-in-netherlands-2019"],
+      "next": {
+        "valueOf": "yes-no-married",
+        "value": {
+          "[\"No\"]": {
+            "fieldId": ["sell-property-in-netherlands-2019", "filing-tax-with-partner", "marital-status"],
+            "next": {
+              "valueOf": "marital-status",
+              "value": {
+                "[\"Yes\"]": {
+                  "fieldId": ["have-children", "dashboard"],
+                  "next": {
+                    "value": {}
+                  }
+                },
+                "[\"No\"]": {
+                  "fieldId": ["dashboard"],
+                  "next": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          },
+          "[\"Yes\"]": {
+            "fieldId": ["buy-property-in-netherlands-2019", "sell-property-in-netherlands-2019", "filing-tax-with-partner", "marital-status"],
+            "next": {
+              "valueOf": "marital-status",
+              "value": {
+                "[\"Yes\"]": {
+                  "fieldId": ["have-children", "dashboard"],
+                  "next": {
+                    "value": {}
+                  }
+                },
+                "[\"No\"]": {
+                  "fieldId": ["dashboard"],
+                  "next": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "Category 2": {
+    "section 1": {
+      "fieldId": ["yes-no-married", "dashboard"],
+      "next": {
+        "value": {}
+      }
+    }
+  }
+}
