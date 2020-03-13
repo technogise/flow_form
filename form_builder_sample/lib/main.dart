@@ -23,9 +23,6 @@ class MyApp extends StatelessWidget {
     return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
-        initialRoute: LoginScreen.id,
-        routes: routes,
-        title: 'Finday',
         theme: appTheme,
         home: Scaffold(
           appBar: AppBar(

@@ -28,12 +28,13 @@ class Tree {
   ///Constructing tree
   Tree() {
     Map<String, dynamic> flow;
-    var flowPath = "assets/json/flow.json";
-    var dataPath = "assets/json/screen_data.json";
+    var flowPath = "packages/formbuilder/assets/json/flow.json";
+    var dataPath = "packages/formbuilder/assets/json/screen_data.json";
 
     var assignFlow = Serializer.fetchJson(flowPath).then((parsedFlow) {
       flow = parsedFlow;
-    });
+    }).catchError(print);
+
     var assignData = Serializer.fetchJson(dataPath).then((parsedData) {
       screenData = parsedData;
     });
