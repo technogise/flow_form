@@ -35,6 +35,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  assets:
+    - assets/json/flow.json
+    - assets/json/screen_data.json
 
   # To add assets to your package, add an assets section, like this:
   # assets:
