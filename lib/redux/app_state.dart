@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
 import '../json_parser/node.dart';
@@ -17,14 +16,10 @@ class AppState {
   ///variable to store user response
   UserResponse userResponse;
 
-  ///Variable to store current user in app state
-  FirebaseUser currentUser;
-
   ///Constructor
   AppState({
     @required this.currentNode,
     @required this.dashBoardNode,
-    @required this.currentUser,
     @required this.userResponse,
   });
 

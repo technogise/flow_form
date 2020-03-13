@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:formbuilder/helpers/database.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/models/store_view_model.dart';
 import 'package:redux/redux.dart';
@@ -67,7 +66,6 @@ class _TextInputScreenState extends State<TextInputScreen> {
   }
 
   void saveData(StoreViewModel viewModel) {
-    Database.saveData(viewModel: viewModel, answer: inputText);
     viewModel.moveToNextNode("next");
   }
 }

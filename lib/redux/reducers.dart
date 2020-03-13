@@ -1,6 +1,5 @@
 import 'app_state.dart';
 import 'reducers/current_node_reducers.dart';
-import 'reducers/current_user_reducers.dart';
 import 'reducers/dashboard_node_reducers.dart';
 import 'reducers/user_response_reducers.dart';
 
@@ -10,6 +9,5 @@ AppState appStateReducer(AppState state, dynamic action) {
       currentNode: currentNodeReducers(state.currentNode, action),
       dashBoardNode: dashBoardNodeReducer(state.dashBoardNode, action),
       userResponse: userResponseReducer(state.userResponse, action),
-      currentUser: currentUserReducers(state.currentUser, action)
   );
 }
