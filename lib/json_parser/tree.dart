@@ -29,7 +29,7 @@ class Tree {
   Tree() {
     Map<String, dynamic> flow;
     var flowPath = "packages/formbuilder/assets/json/flow.json";
-    var dataPath = "packages/formbuilder/assets/json/flow.json";
+    var dataPath = "packages/formbuilder/assets/json/screen_data.json";
 
     var assignFlow = Serializer.fetchJson(flowPath).then((parsedFlow) {
       flow = parsedFlow;
