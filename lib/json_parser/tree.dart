@@ -26,16 +26,15 @@ class Tree {
   final String answers = "value";
 
   ///Constructing tree
-  Tree() {
+  Tree(String flowPath, String screenMetadataPath) {
     Map<String, dynamic> flow;
-    var flowPath = "packages/formbuilder/assets/json/flow.json";
-    var dataPath = "packages/formbuilder/assets/json/screen_data.json";
 
     var assignFlow = Serializer.fetchJson(flowPath).then((parsedFlow) {
       flow = parsedFlow;
-    }).catchError(print);
+    });
 
-    var assignData = Serializer.fetchJson(dataPath).then((parsedData) {
+    var assignData =
+        Serializer.fetchJson(screenMetadataPath).then((parsedData) {
       screenData = parsedData;
     });
 
@@ -46,7 +45,7 @@ class Tree {
 
   ///Building tree for all categories
   void buildTreeForAllCategory(Map<String, dynamic> flow) {
-    dashBoardNode = getDashBoardNode();
+    dashBoardNode = buildDashBoardNode();
     //ToDo: Make this readable
     flow.forEach((categoryName, category) {
       var categoryNode = Node(
@@ -98,7 +97,6 @@ class Tree {
     }
 
     Map<String, dynamic> childDetails = flow[keyForNextQuestion];
-    currentNode.dependsOn = childDetails[nextQuestionDependsOn];
     //ToDo: Make this readable
     childDetails[answers].forEach((answerArray, nextQuestion) {
       List<dynamic> answers = json.decode(answerArray);
@@ -122,7 +120,7 @@ class Tree {
   }
 
   ///Function which gives dashboard node
-  Node getDashBoardNode() {
+  Node buildDashBoardNode() {
     return Node({"type": "dashboard"}, null, null, null);
   }
 }

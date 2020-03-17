@@ -29,6 +29,9 @@
 .pub-cache/
 .pub/
 /build/
+**/ios/Flutter/Debug.xcconfig
+**/ios/Flutter/Release.xcconfig
+pubspec.lock
 
 # Web related
 lib/generated_plugin_registrant.dart

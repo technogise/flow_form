@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+
 import '../json_parser/node.dart';
 import '../json_parser/tree.dart';
 import '../user_response.dart';
@@ -28,8 +29,8 @@ class AppState {
   });
 
   ///Initializing store for the first time
-  AppState.initialState() {
-    Tree();
+  AppState.initialState(String flowPath, String dataPath) {
+    Tree(flowPath, dataPath);
     userResponse = UserResponse();
   }
 }

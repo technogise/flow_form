@@ -3,13 +3,15 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:formbuilder/redux/actions/actions.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/store.dart';
-import 'routes.dart';
+
 import 'styles/theme.dart';
-import 'widgets/screens/login.dart';
 import 'widgets/screens/main_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  var flowPath = "assets/json/flow.json";
+  var dataPath = "assets/json/screen_data.json";
+  setFlowAndDataPath(flowPath, dataPath);
   runApp(MyApp());
 }
 
