@@ -1,7 +1,7 @@
 {
   "Personal details": {
     "section one": {
-      "fieldId": ["ask-name","occupation-2019", "30-percent-ruling-2019", "passport-details","own-property-in-netherlands-2019"],
+      "fieldId": ["yes-no-married","ask-name","occupation-2019", "30-percent-ruling-2019", "own-property-in-netherlands-2019"],
       "next": {
         "valueOf": "yes-no-married",
         "value": {
