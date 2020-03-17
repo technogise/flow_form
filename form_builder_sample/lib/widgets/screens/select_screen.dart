@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:formbuilder/helpers/database.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/models/store_view_model.dart';
 
@@ -41,6 +42,7 @@ class SelectScreen extends StatelessWidget {
     dynamic answer,
     StoreViewModel viewModel,
   ) {
+    Database.saveData(viewModel: viewModel, answer: answer);
     String child = answer is List<String> ? answer.first : answer;
     viewModel.moveToNextNode(child);
   }

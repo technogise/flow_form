@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:formbuilder/helpers/database.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/models/store_view_model.dart';
 
@@ -37,6 +38,7 @@ class _FileUploadScreenState extends State<FileUploadScreen> {
             Comment(text: viewModel.getScreenData("label")),
             QuestionCard(text: viewModel.getScreenData("question")),
             FileUploader(onSubmit: (file) {
+              Database.uploadImageToFireBase(viewModel, file);
               viewModel.moveToNextNode(nextNode);
             }),
           ],
