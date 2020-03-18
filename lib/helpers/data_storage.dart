@@ -5,10 +5,10 @@ import '../redux/models/store_view_model.dart';
 import '../redux/store.dart';
 
 ///Class to do all database related operations
-class Database {
+class DataStorage {
 
   ///Function to update data in fireStore
-  static void saveDataToFireStore({
+  static void storeData({
     Map<String, dynamic> toUpdate,
   }) {
     store.dispatch(CaptureUserResponse(toUpdate: toUpdate));
@@ -17,7 +17,7 @@ class Database {
   ///Function to save data
   static void saveData({StoreViewModel viewModel, dynamic answer}) {
     var dataKey = viewModel.currentNode.dataKey;
-    Database.saveDataToFireStore(
+    DataStorage.storeData(
       toUpdate: {dataKey: answer},
     );
   }

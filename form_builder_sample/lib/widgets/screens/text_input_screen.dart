@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:formbuilder/helpers/database.dart';
+import 'package:formbuilder/helpers/data_storage.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/models/store_view_model.dart';
 
@@ -25,6 +25,7 @@ class _TextInputScreenState extends State<TextInputScreen> {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, StoreViewModel>(
+      onInit: initializeScreen,
       converter: StoreViewModel.fromStore,
       builder: (context, viewModel) {
         var textInputMeta = viewModel.getTextInputMeta();
@@ -45,8 +46,7 @@ class _TextInputScreenState extends State<TextInputScreen> {
                 active: true,
                 label: textInputMeta.buttonText,
                 onPressed: (label) {
-                  Database.saveData(viewModel: viewModel, answer: inputText);
-                  viewModel.goToNextQuestion();
+                  saveData(viewModel);
                 },
               )
             ],
@@ -54,5 +54,15 @@ class _TextInputScreenState extends State<TextInputScreen> {
         );
       },
     );
+  }
+
+  void initializeScreen(Store<AppState> store) {
+    var currentNode = store.state.currentNode;
+    inputText = store.state.userResponse.get(currentNode.dataKey);
+  }
+
+  void saveData(StoreViewModel viewModel) {
+    DataStorage.saveData(viewModel: viewModel, answer: inputText);
+    viewModel.moveToNextNode(keyForNextQuestion);
   }
 }
