@@ -23,25 +23,9 @@ class Database {
   }
 
   ///Function to upload image to fireBase
-  static void uploadImageToFireBase(StoreViewModel viewModel, File image) {
-//    var userEmail = viewModel.currentUser.email;
-//    var key = viewModel.currentNode.dataKey;
-//    var imagePath = path.basename(image.path);
-//    var imagePathInFireBase = 'finday/$userEmail/$key/$imagePath';
-//
-//    var storageReference =
-//        FirebaseStorage.instance.ref().child(imagePathInFireBase);
-//
-//    var uploadTask = storageReference.putFile(image);
-//    uploadTask.onComplete.then(
-//      (response) {
-//        storageReference.getDownloadURL().then(
-//          (fileURL) {
-//            store.dispatch(CaptureUserResponse(toUpdate: {key: image}));
-//          },
-//        );
-//      },
-//    );
-//  }
+  static void uploadImage(StoreViewModel viewModel, File image) {
+    var key = viewModel.currentNode.dataKey;
+    store.dispatch(CaptureUserResponse(toUpdate: {key: image}));
   }
+
 }

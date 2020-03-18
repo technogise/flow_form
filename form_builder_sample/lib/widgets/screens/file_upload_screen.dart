@@ -38,7 +38,7 @@ class _FileUploadScreenState extends State<FileUploadScreen> {
             Comment(text: viewModel.getScreenData("label")),
             QuestionCard(text: viewModel.getScreenData("question")),
             FileUploader(onSubmit: (file) {
-              Database.uploadImageToFireBase(viewModel, file);
+              Database.uploadImage(viewModel, file);
               viewModel.moveToNextNode(nextNode);
             }),
           ],
