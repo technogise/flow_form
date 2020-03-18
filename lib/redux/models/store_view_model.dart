@@ -1,9 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:redux/redux.dart';
 
 import '../../json_parser/node.dart';
 import '../actions/actions.dart';
-import '../actions/current_user_actions.dart';
 import '../app_state.dart';
 import 'abstract_view_model.dart';
 
@@ -12,14 +10,8 @@ class StoreViewModel extends ViewModel {
   ///variable to store current node
   Node currentNode;
 
-  ///Variable to store current user
-  FirebaseUser currentUser;
-
   ///variable to store next node function
   void Function(String) moveToNextNode;
-
-  ///Function to set current user in store
-  void Function(FirebaseUser) setCurrentUser;
 
   ///variable to store selectedValue
   final dynamic selectedValue;
@@ -27,9 +19,7 @@ class StoreViewModel extends ViewModel {
   ///Constructor
   StoreViewModel(
       {this.currentNode,
-      this.currentUser,
       this.moveToNextNode,
-      this.setCurrentUser,
       this.selectedValue});
 
   ///Create from store to generate Tree View Model
@@ -37,14 +27,10 @@ class StoreViewModel extends ViewModel {
     var state = store.state;
     return StoreViewModel(
         currentNode: state.currentNode,
-        currentUser: state.currentUser,
         moveToNextNode: (answer) {
           store.dispatch(NextNode(answer));
         },
-        selectedValue: getSelectedValue(store),
-        setCurrentUser: (FirebaseUser user) {
-          store.dispatch(SetCurrentUser(user));
-        });
+        selectedValue: getSelectedValue(store));
   }
 
   //ToDo: Please add docs
