@@ -6,8 +6,6 @@ import '../redux/store.dart';
 
 ///Class to do all database related operations
 class Database {
-  ///Prefix for database and storage
-  static const String databasePrefix = 'finday';
 
   ///Function to update data in fireStore
   static void saveDataToFireStore({

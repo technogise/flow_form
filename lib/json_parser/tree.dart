@@ -97,6 +97,7 @@ class Tree {
     }
 
     Map<String, dynamic> childDetails = flow[keyForNextQuestion];
+    currentNode.dependsOn = childDetails[nextQuestionDependsOn];
     //ToDo: Make this readable
     childDetails[answers].forEach((answerArray, nextQuestion) {
       List<dynamic> answers = json.decode(answerArray);

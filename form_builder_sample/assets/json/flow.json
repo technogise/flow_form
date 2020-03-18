@@ -1,9 +1,9 @@
 {
   "Personal details": {
     "section one": {
-      "fieldId": ["yes-no-married","ask-name","occupation-2019", "30-percent-ruling-2019", "own-property-in-netherlands-2019"],
+      "fieldId": ["ask-name","occupation-2019", "30-percent-ruling-2019", "own-property-in-netherlands-2019"],
       "next": {
-        "valueOf": "yes-no-married",
+        "valueOf": "own-property-in-netherlands-2019",
         "value": {
           "[\"No\"]": {
             "fieldId": ["sell-property-in-netherlands-2019", "filing-tax-with-partner", "marital-status"],
