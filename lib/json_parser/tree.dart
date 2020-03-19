@@ -14,16 +14,16 @@ class Tree {
   Map<String, dynamic> screenData;
 
   ///variable to store key used to fetch next question from flow.json
-  final String keyForNextQuestion = "next";
+  final String keyForNextQuestion = "nextQuestion";
 
-  ///variable to store key used to fetch questionId from flow.json
-  final String keyForDataId = "fieldId";
-
-  ///variable to store key used to fetch dependsOn value from flow.json
-  final String nextQuestionDependsOn = "valueOf";
+  ///variable to store key used to fetch questionIds from flow.json
+  final String keyForQuestionIds = "questionIds";
 
   ///variable to store key used to fetch dependsOn value from flow.json
-  final String answers = "value";
+  final String nextQuestionDependsOn = "branchDependsOn";
+
+  ///variable to store key used to fetch dependsOn value from flow.json
+  final String answersBranch = "answerBranch";
 
   ///Constructing tree
   Tree(String flowPath, String screenMetadataPath) {
@@ -77,7 +77,7 @@ class Tree {
     String categoryName,
     String sectionName,
   ) {
-    String screenId = flow[keyForDataId].first;
+    String screenId = flow[keyForQuestionIds].first;
     Map<String, dynamic> screenDetails = screenData[screenId];
 
     var currentNode = Node(
@@ -89,8 +89,8 @@ class Tree {
     );
 
     //ToDo: Rethink logic for this
-    if (flow[keyForDataId].length > 1) {
-      flow[keyForDataId].removeAt(0);
+    if (flow[keyForQuestionIds].length > 1) {
+      flow[keyForQuestionIds].removeAt(0);
       var childNode = build(flow, currentNode, categoryName, sectionName);
       currentNode.child[keyForNextQuestion] = childNode;
       return currentNode;
@@ -98,7 +98,7 @@ class Tree {
 
     Map<String, dynamic> childDetails = flow[keyForNextQuestion];
     //ToDo: Make this readable
-    childDetails[answers].forEach((answerArray, nextQuestion) {
+    childDetails[answersBranch].forEach((answerArray, nextQuestion) {
       List<dynamic> answers = json.decode(answerArray);
       var childNode = build(
         nextQuestion,

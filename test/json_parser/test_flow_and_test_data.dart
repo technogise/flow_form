@@ -2,11 +2,11 @@ class TestData {
 
   ///Basic flow.json for testing of 2 linear questions
   static var basicFlowForTwoLinearQuestions = {
-    "Personal details": {
-      "section one": {
-        "fieldId": ["Q1", "Q2"],
-        "next": {
-          "value": {}
+    "CategoryOne": {
+      "SectionOne": {
+        "questionIds": ["Q1", "Q2"],
+        "nextQuestion": {
+          "answerBranch": {}
         }
       }
     }
@@ -27,44 +27,44 @@ class TestData {
   };
 
   var flow = {
-    "Personal details": {
-      "fieldId": ["Q1", "Q2"],
-      "next": {
-        "valueOf": "Q2",
-        "value": {
+    "CategoryOne": {
+      "questionIds": ["Q1", "Q2"],
+      "nextQuestion": {
+        "branchDependsOn": "Q2",
+        "answerBranch": {
           "[\"No\"]": {
-            "fieldId": ["Q3", "Q4"],
-            "next": {
-              "valueOf": "Q3",
-              "value": {
+            "questionIds": ["Q3", "Q4"],
+            "nextQuestion": {
+              "branchDependsOn": "Q3",
+              "answerBranch": {
                 "[\"Yes\"]": {
-                  "fieldId": ["Q5", "dashBoard"],
-                  "next": {
-                    "value": {}
+                  "questionIds": ["Q5", "dashBoard"],
+                  "nextQuestion": {
+                    "answerBranch": {}
                   }
                 },
                 "[\"No\"]": {
-                  "fieldId": ["dashBoard"],
-                  "next": {
-                    "value": {}
+                  "questionIds": ["dashBoard"],
+                  "nextQuestion": {
+                    "answerBranch": {}
                   }
                 }
               }
             }
           },
           "[\"Yes\"]": {
-            "fieldId": ["dashBoard"],
-            "next": {
-              "value": {}
+            "questionIds": ["dashBoard"],
+            "nextQuestion": {
+              "answerBranch": {}
             }
           }
         }
       }
     },
     "Property details": {
-      "fieldId": ["Q5", "dashboard"],
-      "next": {
-        "value": {}
+      "questionIds": ["Q5", "dashboard"],
+      "nextQuestion": {
+        "answerBranch": {}
       }
     }
   };

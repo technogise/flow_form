@@ -66,6 +66,6 @@ class _TextInputScreenState extends State<TextInputScreen> {
   }
 
   void saveData(StoreViewModel viewModel) {
-    viewModel.moveToNextNode("next");
+    viewModel.moveToNextNode("nextQuestion");
   }
 }

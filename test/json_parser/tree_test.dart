@@ -22,27 +22,29 @@ void main() {
 
     var dashboardNode = Node({"type": "dashboard"}, null, null, null);
     var categoryNode =
-        Node({"type": "section"}, dashboardNode, "Personal details", null);
+        Node({"type": "section"}, dashboardNode, "CategoryOne", null);
 
-    dashboardNode.child["Personal details"] = categoryNode;
+    dashboardNode.child["CategoryOne"] = categoryNode;
     categoryNode.prevNode = dashboardNode;
 
     var q1 = Node(
       dataJson["Q1"],
       categoryNode,
-      "Personal details",
-      "section one",
+      null,
+      "CategoryOne",
+      "SectionOne",
     );
 
     var q2 = Node(
       dataJson["Q2"],
       q1,
-      "Personal details",
-      "section one",
+      null,
+      "CategoryOne",
+      "SectionOne",
     );
 
-    q1.child = {"next": q2};
-    categoryNode.child = {"section one": q1};
+    q1.child = {"nextQuestion": q2};
+    categoryNode.child = {"SectionOne": q1};
 
     expect(
       true,
