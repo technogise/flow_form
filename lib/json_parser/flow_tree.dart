@@ -104,6 +104,7 @@ class FlowTree {
     }
 
     Map<String, dynamic> childDetails = flow[keyForNextQuestion];
+    currentNode.dependsOn = childDetails[nextQuestionDependsOn];
     //ToDo: Make this readable
     childDetails[answersBranch].forEach((answerKey, nextQuestion) {
       var childNode = build(
