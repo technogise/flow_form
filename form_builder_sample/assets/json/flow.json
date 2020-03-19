@@ -1,23 +1,38 @@
 {
   "CategoryOne": {
     "SectionOne": {
-      "questionIds": ["ask-name","occupation-2019", "30-percent-ruling-2019", "passport-details","own-property-in-netherlands-2019"],
+      "questionIds": [
+        "ask-name",
+        "occupation-2019",
+        "30-percent-ruling-2019",
+        "passport-details",
+        "own-property-in-netherlands-2019"
+      ],
       "nextQuestion": {
         "branchDependsOn": "yes-no-married",
         "answerBranch": {
-          "[\"No\"]": {
-            "questionIds": ["sell-property-in-netherlands-2019", "filing-tax-with-partner", "marital-status"],
+          "no": {
+            "questionIds": [
+              "sell-property-in-netherlands-2019",
+              "filing-tax-with-partner",
+              "marital-status"
+            ],
             "nextQuestion": {
               "branchDependsOn": "marital-status",
               "answerBranch": {
-                "[\"Yes\"]": {
-                  "questionIds": ["have-children", "dashboard"],
+                "yes": {
+                  "questionIds": [
+                    "have-children",
+                    "dashboard"
+                  ],
                   "nextQuestion": {
                     "answerBranch": {}
                   }
                 },
-                "[\"No\"]": {
-                  "questionIds": ["dashboard"],
+                "no": {
+                  "questionIds": [
+                    "dashboard"
+                  ],
                   "nextQuestion": {
                     "answerBranch": {}
                   }
@@ -25,19 +40,29 @@
               }
             }
           },
-          "[\"Yes\"]": {
-            "questionIds": ["buy-property-in-netherlands-2019", "sell-property-in-netherlands-2019", "filing-tax-with-partner", "marital-status"],
+          "yes": {
+            "questionIds": [
+              "buy-property-in-netherlands-2019",
+              "sell-property-in-netherlands-2019",
+              "filing-tax-with-partner",
+              "marital-status"
+            ],
             "nextQuestion": {
               "branchDependsOn": "marital-status",
               "answerBranch": {
-                "[\"Yes\"]": {
-                  "questionIds": ["have-children", "dashboard"],
+                "yes": {
+                  "questionIds": [
+                    "have-children",
+                    "dashboard"
+                  ],
                   "nextQuestion": {
                     "answerBranch": {}
                   }
                 },
-                "[\"No\"]": {
-                  "questionIds": ["dashboard"],
+                "no": {
+                  "questionIds": [
+                    "dashboard"
+                  ],
                   "nextQuestion": {
                     "answerBranch": {}
                   }
@@ -51,7 +76,10 @@
   },
   "CategoryTwo": {
     "sectionTwo": {
-      "questionIds": ["yes-no-married", "dashboard"],
+      "questionIds": [
+        "yes-no-married",
+        "dashboard"
+      ],
       "nextQuestion": {
         "answerBranch": {}
       }

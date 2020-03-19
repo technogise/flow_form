@@ -1,7 +1,7 @@
 ///Class for making objects for each node in the flow tree
-class Node {
+class FlowNode {
   /// variable to map answers and next question
-  Map<String, Node> child = {};
+  Map<String, FlowNode> child = {};
 
   /// Map to store question related data
   Map<String, dynamic> screenData;
@@ -13,7 +13,7 @@ class Node {
   String dependsOn;
 
   ///variable to store previous question
-  Node prevNode;
+  FlowNode prevNode;
 
   ///variable to store key to this answer's question
   String dataKey;
@@ -25,7 +25,7 @@ class Node {
   String sectionName;
 
   ///Constructing node
-  Node(this.screenData, this.prevNode, this.dataKey, this.categoryName,
+  FlowNode(this.screenData, this.prevNode, this.dataKey, this.categoryName,
       [this.sectionName]) {
     if (screenData != null) {
       type = screenData["type"];
@@ -38,7 +38,7 @@ class Node {
   }
 
   ///Gives the next question node
-  Node getChild(String answer) {
+  FlowNode getChild(String answer) {
     if (child.length == 1) {
       return child.values.first;
     }

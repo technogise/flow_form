@@ -1,10 +1,10 @@
 import 'package:collection/collection.dart';
-import 'package:formbuilder/json_parser/node.dart';
+import 'package:formbuilder/json_parser/flow_node.dart';
 
 ///Helper class for test
 class Helper {
   ///Compare two nodes and there properties
-  static bool compareTwoNodes(Node n1, Node n2) {
+  static bool compareTwoNodes(FlowNode n1, FlowNode n2) {
     var compare = [
       hasSameNumberOfChild(n1, n2),
       hasSameAnswers(n1, n2),
@@ -18,25 +18,25 @@ class Helper {
     return compare.every((isEqual) => isEqual);
   }
 
-  static bool hasSameNumberOfChild(Node n1, Node n2) =>
+  static bool hasSameNumberOfChild(FlowNode n1, FlowNode n2) =>
       n1.child.length == n2.child.length;
 
-  static bool hasSameDependsOn(Node n1, Node n2) =>
+  static bool hasSameDependsOn(FlowNode n1, FlowNode n2) =>
       n1.dependsOn == n2.dependsOn;
 
-  static bool hasSameType(Node n1, Node n2) => n1.type == n2.type;
+  static bool hasSameType(FlowNode n1, FlowNode n2) => n1.type == n2.type;
 
-  static bool hasSameDataKey(Node n1, Node n2) => n1.dataKey == n2.dataKey;
+  static bool hasSameDataKey(FlowNode n1, FlowNode n2) => n1.dataKey == n2.dataKey;
 
-  static bool hasSameSectionName(Node n1, Node n2) =>
+  static bool hasSameSectionName(FlowNode n1, FlowNode n2) =>
       n1.categoryName == n2.categoryName;
 
-  static bool hasSameAnswers(Node n1, Node n2) {
+  static bool hasSameAnswers(FlowNode n1, FlowNode n2) {
     Function eq = const ListEquality().equals;
     return eq(n1.child.keys.toList(), n2.child.keys.toList());
   }
 
-  static bool hasSameParent(Node n1, Node n2) {
+  static bool hasSameParent(FlowNode n1, FlowNode n2) {
     var isN1ParentNull = n1.prevNode == null;
     var isN2ParentNull = n2.prevNode == null;
 
@@ -47,7 +47,7 @@ class Helper {
   }
 
   /// traverse and compare two trees
-  static bool traverseAndCompareTwoTrees(Node t1, Node t2) {
+  static bool traverseAndCompareTwoTrees(FlowNode t1, FlowNode t2) {
     if (!compareTwoNodes(t1, t2)) {
       return false;
     }

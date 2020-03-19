@@ -1,6 +1,6 @@
 import 'package:redux/redux.dart';
 
-import '../../json_parser/node.dart';
+import '../../json_parser/flow_node.dart';
 import '../actions/actions.dart';
 import '../app_state.dart';
 import 'abstract_view_model.dart';
@@ -8,7 +8,7 @@ import 'abstract_view_model.dart';
 ///Class for filtering info given to components from store
 class StoreViewModel extends ViewModel {
   ///variable to store current node
-  Node currentNode;
+  FlowNode currentNode;
 
   ///variable to store next node function
   void Function(String) moveToNextNode;

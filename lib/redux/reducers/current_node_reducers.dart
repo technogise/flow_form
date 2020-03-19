@@ -1,23 +1,23 @@
 import 'package:redux/redux.dart';
 
-import '../../json_parser/node.dart';
+import '../../json_parser/flow_node.dart';
 import '../actions/actions.dart';
 import '../store.dart';
 
 ///variable to store current node reducers
-final Reducer<Node> currentNodeReducers = combineReducers<Node>([
-  TypedReducer<Node, SetCurrentNode>(setCurrentNode),
-  TypedReducer<Node, NextNode>(moveToNextNode),
-  TypedReducer<Node, NodeActions>(nodeReducers)
+final Reducer<FlowNode> currentNodeReducers = combineReducers<FlowNode>([
+  TypedReducer<FlowNode, SetCurrentNode>(setCurrentNode),
+  TypedReducer<FlowNode, NextNode>(moveToNextNode),
+  TypedReducer<FlowNode, NodeActions>(nodeReducers)
 ]);
 
 ///Reducer to set value of currentNode
-Node setCurrentNode(Node currentNode, SetCurrentNode action) {
+FlowNode setCurrentNode(FlowNode currentNode, SetCurrentNode action) {
   return action.currentNode;
 }
 
 ///Reducer to move to next question
-Node moveToNextNode(Node currentNode, NextNode action) {
+FlowNode moveToNextNode(FlowNode currentNode, NextNode action) {
   if (currentNode.dependsOn == currentNode.dataKey) {
     return currentNode.getChild(action.answer);
   }
@@ -27,7 +27,7 @@ Node moveToNextNode(Node currentNode, NextNode action) {
 }
 
 ///Reducer to change current node's value
-Node nodeReducers(Node currentNode, NodeActions action) {
+FlowNode nodeReducers(FlowNode currentNode, NodeActions action) {
   var newNode = currentNode;
   switch (action) {
     case NodeActions.prevNode:

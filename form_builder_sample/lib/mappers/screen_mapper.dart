@@ -11,7 +11,7 @@ import '../widgets/screens/text_input_screen.dart';
 ///Class for mapping component names from json to component
 class ScreenMapper {
   ///Function to provide requested screen
-  static Widget getScreen(String type, String uniqueKey, ViewModel viewModel) {
+  static Widget getScreen(String type, ViewModel viewModel) {
     var mapper = {
       SelectScreen.type: SelectScreen(),
       DatePickerScreen.type: DatePickerScreen(),

@@ -1,17 +1,19 @@
 import 'package:flutter/foundation.dart';
+import 'package:formbuilder/redux/actions/actions.dart';
+import 'package:formbuilder/redux/store.dart';
 
-import '../json_parser/node.dart';
-import '../json_parser/tree.dart';
+import '../json_parser/flow_node.dart';
+import '../json_parser/flow_tree.dart';
 import '../user_response.dart';
 
 //ToDo: Separate these two
 ///Class for single App store
 class AppState {
   ///variable to store current node
-  Node currentNode;
+  FlowNode currentNode;
 
   ///variable to store dashboard node
-  Node dashBoardNode;
+  FlowNode dashBoardNode;
 
   ///variable to store user response
   UserResponse userResponse;
@@ -25,7 +27,7 @@ class AppState {
 
   ///Initializing store for the first time
   AppState.initialState(String flowPath, String dataPath) {
-    Tree(flowPath, dataPath);
+    FlowTree(flowPath, dataPath);
     userResponse = UserResponse();
   }
 }
