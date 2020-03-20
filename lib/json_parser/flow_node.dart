@@ -42,6 +42,6 @@ class FlowNode {
     if (child.length == 1) {
       return child.values.first;
     }
-    return child[answer];
+    return child[answer.toLowerCase()];
   }
 }

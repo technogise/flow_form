@@ -2,7 +2,6 @@ import 'package:redux/redux.dart';
 
 import '../../json_parser/flow_node.dart';
 import '../actions/actions.dart';
-import '../store.dart';
 
 ///variable to store current node reducers
 final Reducer<FlowNode> currentNodeReducers = combineReducers<FlowNode>([
@@ -18,12 +17,7 @@ FlowNode setCurrentNode(FlowNode currentNode, SetCurrentNode action) {
 
 ///Reducer to move to next question
 FlowNode moveToNextNode(FlowNode currentNode, NextNode action) {
-  if (currentNode.dependsOn == currentNode.dataKey) {
-    return currentNode.getChild(action.answer);
-  }
-  var dependsOn = currentNode.dependsOn;
-  var userResponse = store.state.userResponse.get(null);
-  return currentNode.getChild(userResponse[dependsOn]);
+  return currentNode.getChild(action.answer);
 }
 
 ///Reducer to change current node's value
