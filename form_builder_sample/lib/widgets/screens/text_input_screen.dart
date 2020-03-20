@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/models/store_view_model.dart';
-import 'package:formbuildersample/hive_implementation.dart';
+import 'package:formbuildersample/database_implementation.dart';
 import 'package:redux/redux.dart';
 
 import '../components/buttons/submit_button.dart';
@@ -60,11 +60,11 @@ class _TextInputScreenState extends State<TextInputScreen> {
 
   void initializeScreen(Store<AppState> store) async{
     var currentNode = store.state.currentNode;
-    inputText = HiveImplementation().getData(currentNode.dataKey);
+    inputText = DatabaseImplementation().getData(currentNode.dataKey);
   }
 
   void saveData(StoreViewModel viewModel) {
-    HiveImplementation.saveData(viewModel: viewModel, answer: inputText);
+    DatabaseImplementation.saveData(viewModel: viewModel, answer: inputText);
     viewModel.moveToNextNode(keyForNextQuestion);
   }
 }

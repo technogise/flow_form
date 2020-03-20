@@ -3,7 +3,7 @@ import 'package:formbuilder/helpers/data_storage.dart';
 import 'package:formbuilder/redux/models/store_view_model.dart';
 import 'package:hive/hive.dart';
 
-class HiveImplementation implements Database {
+class DatabaseImplementation implements Database {
   ///Function to save data
   static void saveData({StoreViewModel viewModel, dynamic answer}) {
     DataStorage.saveData(viewModel: viewModel, answer: answer);
