@@ -9,7 +9,7 @@ class Database {
   }
 
   /// Function to get data
-  static void getData() {
+  String getData(String dataKey) {
 
   }
 }

@@ -28,4 +28,10 @@ class DataStorage {
     store.dispatch(CaptureUserResponse(toUpdate: {key: image}));
   }
 
+  static void updateData(String dataKey, dynamic answer) {
+    DataStorage.storeData(
+      toUpdate: {dataKey: answer},
+    );
+  }
+
 }
