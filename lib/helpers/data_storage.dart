@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:path/path.dart' as path;
 import '../redux/actions/actions.dart';
 import '../redux/models/store_view_model.dart';
 import '../redux/store.dart';

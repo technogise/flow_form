@@ -13,7 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final appDocumentDirectory = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
-  final testBox = await Hive.openBox("DataBox");
+  await Hive.openBox("DataBox");
   var flowPath = "assets/json/flow.json";
   var dataPath = "assets/json/screen_data.json";
   setFlowAndDataPath(flowPath, dataPath);
