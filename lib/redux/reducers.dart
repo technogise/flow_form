@@ -9,5 +9,6 @@ AppState appStateReducer(AppState state, dynamic action) {
       currentNode: currentNodeReducers(state.currentNode, action),
       dashBoardNode: dashBoardNodeReducer(state.dashBoardNode, action),
       userResponse: userResponseReducer(state.userResponse, action),
+      database: state.database
   );
 }

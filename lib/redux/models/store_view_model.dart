@@ -1,4 +1,5 @@
 import 'package:formbuilder/json_parser/flow_tree.dart';
+import 'package:formbuilder/helpers/database.dart';
 import 'package:redux/redux.dart';
 
 import '../../json_parser/flow_node.dart';
@@ -17,8 +18,10 @@ class StoreViewModel extends ViewModel {
   ///variable to store selectedValue
   final dynamic selectedValue;
 
+  Database database;
+
   ///Constructor
-  StoreViewModel({this.currentNode, this.moveToNextNode, this.selectedValue});
+  StoreViewModel({this.currentNode, this.moveToNextNode, this.selectedValue,  this.database});
 
   ///Create from store to generate Tree View Model
   static StoreViewModel fromStore(Store<AppState> store) {
@@ -28,7 +31,8 @@ class StoreViewModel extends ViewModel {
         moveToNextNode: (answer) {
           store.dispatch(NextNode(answer));
         },
-        selectedValue: getSelectedValue(store));
+        selectedValue: getSelectedValue(store),
+        database: store.state.database);
   }
 
   //ToDo: Please add docs

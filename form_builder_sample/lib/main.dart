@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:formbuilder/redux/actions/actions.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/store.dart';
+import 'package:formbuildersample/database_impl.dart';
 import 'package:hive/hive.dart';
 
 import 'styles/theme.dart';
@@ -15,6 +16,7 @@ void main() async {
   var flowPath = "assets/json/flow.json";
   var dataPath = "assets/json/screen_data.json";
   setFlowAndDataPath(flowPath, dataPath);
+  setupDB(DatabaseImpl());
   runApp(MyApp());
 }
 

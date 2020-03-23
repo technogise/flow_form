@@ -1,11 +1,13 @@
+import 'package:formbuilder/redux/models/store_view_model.dart';
+
 class Database {
   
   ///Function to save data
-  static void saveData() {
+  void saveData({StoreViewModel viewModel, dynamic answer}) {
   }
 
   ///Function to upload image to fireBase
-  static void uploadImage() {
+  void uploadImage() {
   }
 
   /// Function to get data

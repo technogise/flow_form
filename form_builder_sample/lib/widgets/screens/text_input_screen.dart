@@ -60,11 +60,11 @@ class _TextInputScreenState extends State<TextInputScreen> {
 
   void initializeScreen(Store<AppState> store) async{
     var currentNode = store.state.currentNode;
-    inputText = DatabaseImpl().getData(currentNode.dataKey);
+    inputText = store.state.database.getData(currentNode.dataKey);
   }
 
   void saveData(StoreViewModel viewModel) {
-    DatabaseImpl().saveData(viewModel: viewModel, answer: inputText);
+    viewModel.database.saveData(viewModel: viewModel, answer: inputText);
     viewModel.moveToNextNode(keyForNextQuestion);
   }
 }
