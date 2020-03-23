@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../styles/common.dart';
-
 ///Class for reusable Comment component
 class Comment extends StatelessWidget {
   ///variable to store comment text
@@ -16,7 +14,10 @@ class Comment extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(20, 60, 20, 5),
       child: Text(
         text,
-        style: AppText.commentText,
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
+        ),
       ),
     );
   }
