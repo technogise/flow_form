@@ -43,7 +43,7 @@ class SelectScreen extends StatelessWidget {
     StoreViewModel viewModel,
   ) {
     viewModel.database.saveData(viewModel: viewModel, answer: answer);
-    String child = answer is List<String> ? answer.first : answer;
+    String child = answer is List<dynamic> ? answer.first : answer;
     viewModel.moveToNextNode(child);
   }
 }

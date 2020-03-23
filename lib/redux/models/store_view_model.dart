@@ -79,7 +79,7 @@ class SelectScreenMeta {
   final String comment;
   final String optionType;
   final String selectedValue;
-  final List<String> options;
+  final List<dynamic> options;
 
   SelectScreenMeta(this.question, this.comment, this.optionType, this.options,
       this.selectedValue);
