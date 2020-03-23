@@ -27,7 +27,7 @@ class _TextInputScreenState extends State<TextInputScreen> {
     return StoreConnector<AppState, StoreViewModel>(
       converter: StoreViewModel.fromStore,
       builder: (context, viewModel) {
-        var textInputMeta = viewModel.getTextInput();
+        var textInputMeta = viewModel.getTextInputMeta();
         return Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(

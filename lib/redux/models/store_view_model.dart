@@ -46,11 +46,16 @@ class StoreViewModel extends ViewModel {
   /// or objects
   dynamic getScreenData(String key) => currentNode.screenData[key];
 
-  TextInputMeta getTextInput() {
+  TextInputMeta getTextInputMeta() {
     return TextInputMeta(
       getScreenData("hint"),
       getScreenData("buttonText"),
     );
+  }
+
+  SelectScreenMeta getSelectScreenMeta() {
+    return SelectScreenMeta(getScreenData("question"), getScreenData("label"),
+        getScreenData("select-type"), getScreenData("options"), selectedValue);
   }
 
   void goToNextQuestion() {
@@ -63,4 +68,15 @@ class TextInputMeta {
   final String buttonText;
 
   TextInputMeta(this.hintText, this.buttonText);
+}
+
+class SelectScreenMeta {
+  final String question;
+  final String comment;
+  final String optionType;
+  final String selectedValue;
+  final List<String> options;
+
+  SelectScreenMeta(this.question, this.comment, this.optionType, this.options,
+      this.selectedValue);
 }
