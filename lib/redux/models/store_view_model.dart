@@ -1,3 +1,4 @@
+import 'package:formbuilder/json_parser/flow_tree.dart';
 import 'package:redux/redux.dart';
 
 import '../../json_parser/flow_node.dart';
@@ -17,10 +18,7 @@ class StoreViewModel extends ViewModel {
   final dynamic selectedValue;
 
   ///Constructor
-  StoreViewModel(
-      {this.currentNode,
-      this.moveToNextNode,
-      this.selectedValue});
+  StoreViewModel({this.currentNode, this.moveToNextNode, this.selectedValue});
 
   ///Create from store to generate Tree View Model
   static StoreViewModel fromStore(Store<AppState> store) {
@@ -47,4 +45,22 @@ class StoreViewModel extends ViewModel {
   /// this needs to be dynamic because options is a list and others are string
   /// or objects
   dynamic getScreenData(String key) => currentNode.screenData[key];
+
+  TextInputMeta getTextInput() {
+    return TextInputMeta(
+      getScreenData("hint"),
+      getScreenData("buttonText"),
+    );
+  }
+
+  void goToNextQuestion() {
+    moveToNextNode(keyForNextQuestion);
+  }
+}
+
+class TextInputMeta {
+  final String hintText;
+  final String buttonText;
+
+  TextInputMeta(this.hintText, this.buttonText);
 }

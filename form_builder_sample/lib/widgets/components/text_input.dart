@@ -28,10 +28,9 @@ class TextInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       obscureText: obscureText,
-//ToDo: Sandal look into how to incorporate text editing controller
-//      controller: TextEditingController(text: initialValue),
+      initialValue: initialValue,
       textAlign: TextAlign.center,
       onChanged: onChange,
       decoration: InputDecoration(hintText: hintText),
