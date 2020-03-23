@@ -18,7 +18,7 @@ void main() async {
   runApp(MyApp());
 }
 
-///MyApp entry of Finday app
+///MyApp entry of form builder sample
 class MyApp extends StatelessWidget {
   /// Static variable to refer this class in routes
   static const id = '/';
