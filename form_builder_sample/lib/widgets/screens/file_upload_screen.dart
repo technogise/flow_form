@@ -29,14 +29,15 @@ class _FileUploadScreenState extends State<FileUploadScreen> {
     return StoreConnector<AppState, StoreViewModel>(
       converter: StoreViewModel.fromStore,
       builder: (context, viewModel) {
-        final String nextNode = viewModel.getScreenData("options").first;
+        var selectScreenMeta = viewModel.getSelectScreenMeta();
+        final String nextNode = selectScreenMeta.options.first;
         return Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Comment(text: viewModel.getScreenData("label")),
-            QuestionCard(text: viewModel.getScreenData("question")),
+            Comment(text: selectScreenMeta.comment),
+            QuestionCard(text: selectScreenMeta.question),
             FileUploader(onSubmit: (file) {
               Database.uploadImage(viewModel, file);
               viewModel.moveToNextNode(nextNode);

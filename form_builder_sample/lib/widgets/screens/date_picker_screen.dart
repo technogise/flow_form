@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/models/store_view_model.dart';
+
 import '../components/comment.dart';
 import '../components/date_picker/date_picker.dart';
 import '../components/select/options.dart';
@@ -22,16 +24,17 @@ class _DatePickerState extends State<DatePickerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector(
+    return StoreConnector<AppState, StoreViewModel>(
       converter: StoreViewModel.fromStore,
       builder: (context, viewModel) {
+        var selectScreenMeta = viewModel.getSelectScreenMeta();
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Comment(text: viewModel.getScreenData("label")),
+            Comment(text: selectScreenMeta.comment),
             DatePicker(),
             Options(
-              options: viewModel.getScreenData("options"),
+              options: selectScreenMeta.options,
               onPressed: viewModel.moveToNextNode,
             ),
           ],
