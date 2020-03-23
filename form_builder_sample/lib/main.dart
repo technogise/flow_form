@@ -11,9 +11,7 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final appDocumentDirectory = await path_provider.getApplicationDocumentsDirectory();
-  Hive.init(appDocumentDirectory.path);
-  await Hive.openBox("DataBox");
+  initHiveDB();
   var flowPath = "assets/json/flow.json";
   var dataPath = "assets/json/screen_data.json";
   setFlowAndDataPath(flowPath, dataPath);
@@ -43,4 +41,10 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+void initHiveDB() async {
+  final appDocumentDirectory = await path_provider.getApplicationDocumentsDirectory();
+  Hive.init(appDocumentDirectory.path);
+  await Hive.openBox("DataBox");
 }

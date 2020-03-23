@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/models/store_view_model.dart';
-import 'package:formbuildersample/database_implementation.dart';
+import 'package:formbuildersample/database_impl.dart';
 import 'package:redux/redux.dart';
 
 import '../components/buttons/submit_button.dart';
@@ -60,11 +60,11 @@ class _TextInputScreenState extends State<TextInputScreen> {
 
   void initializeScreen(Store<AppState> store) async{
     var currentNode = store.state.currentNode;
-    inputText = DatabaseImplementation().getData(currentNode.dataKey);
+    inputText = DatabaseImpl().getData(currentNode.dataKey);
   }
 
   void saveData(StoreViewModel viewModel) {
-    DatabaseImplementation.saveData(viewModel: viewModel, answer: inputText);
+    DatabaseImpl().saveData(viewModel: viewModel, answer: inputText);
     viewModel.moveToNextNode(keyForNextQuestion);
   }
 }
