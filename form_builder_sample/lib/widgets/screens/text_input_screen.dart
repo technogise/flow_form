@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:formbuilder/helpers/database.dart';
 import 'package:formbuilder/redux/app_state.dart';
+import 'package:formbuilder/json_parser/flow_tree.dart';
 import 'package:formbuilder/redux/models/store_view_model.dart';
+import 'package:formbuildersample/database_impl.dart';
 import 'package:redux/redux.dart';
 
 import '../components/buttons/submit_button.dart';
@@ -13,19 +14,15 @@ class TextInputScreen extends StatefulWidget {
   /// Static variable to refer this class in routes
   static const String type = 'text-input';
 
-  final String text;
-
   /// Constructor
-  TextInputScreen({Key key, this.text}) : super(key: key);
+  TextInputScreen({Key key}) : super(key: key);
 
   @override
-  _TextInputScreenState createState() => _TextInputScreenState(inputText: text);
+  _TextInputScreenState createState() => _TextInputScreenState();
 }
 
 class _TextInputScreenState extends State<TextInputScreen> {
   String inputText;
-
-  _TextInputScreenState({this.inputText = ''});
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +30,14 @@ class _TextInputScreenState extends State<TextInputScreen> {
       onInit: initializeScreen,
       converter: StoreViewModel.fromStore,
       builder: (context, viewModel) {
+        var textInputMeta = viewModel.getTextInputMeta();
         return Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextInput(
-                hintText: viewModel.getScreenData("hint"),
+                hintText: textInputMeta.hintText,
                 onChange: (value) {
                   setState(() {
                     inputText = value;
@@ -49,7 +47,7 @@ class _TextInputScreenState extends State<TextInputScreen> {
               ),
               SubmitButton(
                 active: true,
-                label: viewModel.getScreenData("buttonText"),
+                label: textInputMeta.buttonText,
                 onPressed: (label) {
                   saveData(viewModel);
                 },
@@ -61,13 +59,13 @@ class _TextInputScreenState extends State<TextInputScreen> {
     );
   }
 
-  void initializeScreen(Store<AppState> store) {
+  void initializeScreen(Store<AppState> store) async{
     var currentNode = store.state.currentNode;
-    inputText = store.state.userResponse.get(currentNode.dataKey);
+    inputText = store.state.database.getData(currentNode.dataKey);
   }
 
   void saveData(StoreViewModel viewModel) {
-    Database.saveData(viewModel: viewModel, answer: inputText);
-    viewModel.moveToNextNode("next");
+    viewModel.database.saveData(viewModel: viewModel, answer: inputText);
+    viewModel.moveToNextNode(keyForNextQuestion);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:formbuilder/redux/models/store_view_model.dart';
 
 import '../widgets/components/select/multi_options.dart';
 import '../widgets/components/select/options.dart';
@@ -7,29 +8,24 @@ import '../widgets/components/select/radio.dart';
 ///Class for mapping component names from json to component
 class SelectMapper {
   ///Function to provide requested screen
-  static Widget getSelect({
-    String type = Options.type,
-    List options,
-    Function next,
-    dynamic selectedValue
-  }) {
+  static Widget getSelect(SelectScreenMeta selectScreenMeta, {Function next}) {
     var mapper = {
       Options.type: Options(
-        options: options,
+        options: selectScreenMeta.options,
         onPressed: next,
-        selectedValue: selectedValue,
+        selectedValue: selectScreenMeta.selectedValue,
       ),
       RadioButtons.type: RadioButtons(
-        options: options,
+        options: selectScreenMeta.options,
         onPressed: next,
-        selectedValue: selectedValue,
+        selectedValue: selectScreenMeta.selectedValue,
       ),
       MultiSelectOptions.type: MultiSelectOptions(
-        options: options,
+        options: selectScreenMeta.options,
         onPressed: next,
       )
     };
 
-    return mapper[type];
+    return mapper[selectScreenMeta.optionType];
   }
 }

@@ -3,17 +3,24 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:formbuilder/redux/actions/actions.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/store.dart';
-import 'routes.dart';
-import 'styles/theme.dart';
-import 'widgets/screens/login.dart';
-import 'widgets/screens/main_screen.dart';
+import 'package:formbuildersample/database_impl.dart';
+import 'package:hive/hive.dart';
 
-void main() {
+import 'styles/theme.dart';
+import 'widgets/screens/main_screen.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  initHiveDB();
+  var flowPath = "assets/json/flow.json";
+  var dataPath = "assets/json/screen_data.json";
+  setFlowAndDataPath(flowPath, dataPath);
+  setupDB(DatabaseImpl());
   runApp(MyApp());
 }
 
-///MyApp entry of Finday app
+///MyApp entry of form builder sample
 class MyApp extends StatelessWidget {
   /// Static variable to refer this class in routes
   static const id = '/';
@@ -36,4 +43,10 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+void initHiveDB() async {
+  final appDocumentDirectory = await path_provider.getApplicationDocumentsDirectory();
+  Hive.init(appDocumentDirectory.path);
+  await Hive.openBox("DataBox");
 }

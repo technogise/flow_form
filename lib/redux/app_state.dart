@@ -1,35 +1,35 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import '../json_parser/node.dart';
-import '../json_parser/tree.dart';
+import 'package:formbuilder/helpers/database.dart';
+import '../json_parser/flow_node.dart';
+import '../json_parser/flow_tree.dart';
 import '../user_response.dart';
 
 //ToDo: Separate these two
 ///Class for single App store
 class AppState {
   ///variable to store current node
-  Node currentNode;
+  FlowNode currentNode;
 
   ///variable to store dashboard node
-  Node dashBoardNode;
+  FlowNode dashBoardNode;
 
   ///variable to store user response
   UserResponse userResponse;
 
-  ///Variable to store current user in app state
-  FirebaseUser currentUser;
+  Database database;
 
   ///Constructor
   AppState({
     @required this.currentNode,
     @required this.dashBoardNode,
-    @required this.currentUser,
     @required this.userResponse,
+    @required this.database,
   });
 
   ///Initializing store for the first time
-  AppState.initialState() {
-    Tree();
+  AppState.initialState(String flowPath, String dataPath, Database database) {
+    FlowTree(flowPath, dataPath);
     userResponse = UserResponse();
+    this.database = database;
   }
 }

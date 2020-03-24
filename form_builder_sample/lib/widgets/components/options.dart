@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'square_buttons.dart';
 
 ///Class for reusable Options component
@@ -21,6 +22,7 @@ class Options extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: Should option from a list
     return Container(
       child: Row(
         children: <Widget>[

@@ -1,50 +1,38 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:formbuilder/json_parser/flow_tree.dart';
+import 'package:formbuilder/helpers/database.dart';
 import 'package:redux/redux.dart';
 
-import '../../json_parser/node.dart';
+import '../../json_parser/flow_node.dart';
 import '../actions/actions.dart';
-import '../actions/current_user_actions.dart';
 import '../app_state.dart';
 import 'abstract_view_model.dart';
 
 ///Class for filtering info given to components from store
 class StoreViewModel extends ViewModel {
   ///variable to store current node
-  Node currentNode;
-
-  ///Variable to store current user
-  FirebaseUser currentUser;
+  FlowNode currentNode;
 
   ///variable to store next node function
   void Function(String) moveToNextNode;
 
-  ///Function to set current user in store
-  void Function(FirebaseUser) setCurrentUser;
-
   ///variable to store selectedValue
   final dynamic selectedValue;
 
+  Database database;
+
   ///Constructor
-  StoreViewModel(
-      {this.currentNode,
-      this.currentUser,
-      this.moveToNextNode,
-      this.setCurrentUser,
-      this.selectedValue});
+  StoreViewModel({this.currentNode, this.moveToNextNode, this.selectedValue,  this.database});
 
   ///Create from store to generate Tree View Model
   static StoreViewModel fromStore(Store<AppState> store) {
     var state = store.state;
     return StoreViewModel(
         currentNode: state.currentNode,
-        currentUser: state.currentUser,
         moveToNextNode: (answer) {
           store.dispatch(NextNode(answer));
         },
         selectedValue: getSelectedValue(store),
-        setCurrentUser: (FirebaseUser user) {
-          store.dispatch(SetCurrentUser(user));
-        });
+        database: store.state.database);
   }
 
   //ToDo: Please add docs
@@ -61,4 +49,38 @@ class StoreViewModel extends ViewModel {
   /// this needs to be dynamic because options is a list and others are string
   /// or objects
   dynamic getScreenData(String key) => currentNode.screenData[key];
+
+  TextInputMeta getTextInputMeta() {
+    return TextInputMeta(
+      getScreenData("hint"),
+      getScreenData("buttonText"),
+    );
+  }
+
+  SelectScreenMeta getSelectScreenMeta() {
+    return SelectScreenMeta(getScreenData("question"), getScreenData("label"),
+        getScreenData("select-type"), getScreenData("options"), selectedValue);
+  }
+
+  void goToNextQuestion() {
+    moveToNextNode(keyForNextQuestion);
+  }
+}
+
+class TextInputMeta {
+  final String hintText;
+  final String buttonText;
+
+  TextInputMeta(this.hintText, this.buttonText);
+}
+
+class SelectScreenMeta {
+  final String question;
+  final String comment;
+  final String optionType;
+  final String selectedValue;
+  final List<dynamic> options;
+
+  SelectScreenMeta(this.question, this.comment, this.optionType, this.options,
+      this.selectedValue);
 }

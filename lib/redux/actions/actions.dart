@@ -1,4 +1,4 @@
-import '../../json_parser/node.dart';
+import '../../json_parser/flow_node.dart';
 
 ///Class for action Next node
 class NextNode {
@@ -12,7 +12,7 @@ class NextNode {
 ///Class for action set current node
 class SetCurrentNode {
   ///variable to store current node
-  Node currentNode;
+  FlowNode currentNode;
 
   ///Constructor
   SetCurrentNode(this.currentNode);
@@ -21,7 +21,7 @@ class SetCurrentNode {
 ///Class for action set dashboard node
 class SetDashBoardNode {
   ///variable to dashboard node
-  Node dashBoardNode;
+  FlowNode dashBoardNode;
 
   ///Constructor
   SetDashBoardNode(this.dashBoardNode);

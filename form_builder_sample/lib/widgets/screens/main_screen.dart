@@ -17,7 +17,6 @@ class MainScreen extends StatelessWidget {
           if (viewModel.currentNode != null) {
             return ScreenMapper.getScreen(
               viewModel.currentNode.type,
-              viewModel.currentNode.dataKey,
               viewModel,
             );
           }

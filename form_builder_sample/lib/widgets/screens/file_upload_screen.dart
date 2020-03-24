@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:formbuilder/helpers/database.dart';
+import 'package:formbuilder/helpers/data_storage.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/models/store_view_model.dart';
 
@@ -29,16 +29,17 @@ class _FileUploadScreenState extends State<FileUploadScreen> {
     return StoreConnector<AppState, StoreViewModel>(
       converter: StoreViewModel.fromStore,
       builder: (context, viewModel) {
-        final String nextNode = viewModel.getScreenData("options").first;
+        var selectScreenMeta = viewModel.getSelectScreenMeta();
+        final String nextNode = selectScreenMeta.options.first;
         return Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Comment(text: viewModel.getScreenData("label")),
-            QuestionCard(text: viewModel.getScreenData("question")),
+            Comment(text: selectScreenMeta.comment),
+            QuestionCard(text: selectScreenMeta.question),
             FileUploader(onSubmit: (file) {
-              Database.uploadImageToFireBase(viewModel, file);
+              DataStorage.uploadImage(viewModel, file);
               viewModel.moveToNextNode(nextNode);
             }),
           ],
