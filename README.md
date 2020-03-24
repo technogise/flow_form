@@ -148,4 +148,4 @@ Developer need to provide a flow.json file with given format.
 **Note :**
 1. Where `questionIds` are the list of ids which we used to fetch screen data of the specific question.
 2. The `answerBranch` the branching part where we navigate to different flow based on the selected answer.
-3. Keep the all json keys in small case to keep the consistency.
+3. Keep the all json keys in camel case to keep the consistency.
