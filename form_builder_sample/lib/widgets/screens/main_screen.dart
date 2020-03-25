@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:formbuilder/redux/app_state.dart';
-import 'package:formbuilder/redux/models/store_view_model.dart';
-import 'package:formbuilder/widget_registry.dart';
+import 'package:formbuilder/formbuilder.dart';
+import 'package:formbuildersample/mappers/screen_mapper.dart';
 
 ///Class for main screen component
 class MainScreen extends StatelessWidget {
@@ -11,15 +9,13 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, StoreViewModel>(
-        converter: StoreViewModel.fromStore,
-        builder: (context, viewModel) {
-          if (viewModel.currentNode != null) {
-            return getRegistry().getScreen(
-              viewModel.currentNode.type
-            );
-          }
-          return Container();
-        });
+    return FormBuilderWidget(builder: (formMetadata) {
+      if (formMetadata != null) {
+        return ScreenMapper.getScreen(
+          formMetadata.screenType,
+        );
+      }
+      return Container();
+    });
   }
 }
