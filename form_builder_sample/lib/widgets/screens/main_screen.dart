@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/models/store_view_model.dart';
-import 'package:formbuildersample/mappers/screen_mapper.dart';
+import 'package:formbuilder/widget_registry.dart';
 
 ///Class for main screen component
 class MainScreen extends StatelessWidget {
@@ -15,9 +15,8 @@ class MainScreen extends StatelessWidget {
         converter: StoreViewModel.fromStore,
         builder: (context, viewModel) {
           if (viewModel.currentNode != null) {
-            return ScreenMapper.getScreen(
-              viewModel.currentNode.type,
-              viewModel,
+            return getRegistry().getScreen(
+              viewModel.currentNode.type
             );
           }
           return Container();

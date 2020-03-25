@@ -13,12 +13,6 @@ class FileUploadScreen extends StatefulWidget {
   ///Static variable to represent the screen type
   static String type = 'file-upload';
 
-  ///Instance variable to store the view model
-  final StoreViewModel viewModel;
-
-  ///Constructor to instantiate File Uploader
-  FileUploadScreen(this.viewModel);
-
   @override
   _FileUploadScreenState createState() => _FileUploadScreenState();
 }
