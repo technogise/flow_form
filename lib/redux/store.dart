@@ -22,3 +22,4 @@ void setFlowAndDataPath(String flowPath, String dataScreenPath) {
 void setupDB(Database database) {
   _globalDB = database;
 }
+
