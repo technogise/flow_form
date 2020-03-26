@@ -3,6 +3,7 @@ library formbuilder;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:formbuilder/redux/app_state.dart';
+import 'package:formbuilder/redux/store.dart';
 
 import 'redux/models/store_view_model.dart';
 
@@ -34,6 +35,35 @@ class FormBuilderWidget extends StatelessWidget {
   }
 }
 
+class FormBuilderProvider extends InheritedWidget {
+  FormBuilderProvider({
+    Key key,
+    @required Widget child,
+  })  : assert(child != null),
+        super(key: key, child: _buildStoreProvider(child));
+
+  static FormBuilderProvider of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<FormBuilderProvider>();
+  }
+
+  static QuestionNavigation navigatorOf(BuildContext context) {
+    var storeViewModel = StoreViewModel.fromStore(store);
+    return QuestionNavigation(storeViewModel);
+  }
+
+  @override
+  bool updateShouldNotify(FormBuilderProvider old) {
+    return child != old.child;
+  }
+}
+
+Widget _buildStoreProvider(Widget childWidget) {
+  return StoreProvider<AppState>(
+    store: store,
+    child: childWidget,
+  );
+}
+
 class FormMetadata {
   final String screenType;
   final Map<String, dynamic> metadata;
@@ -43,9 +73,9 @@ class FormMetadata {
 }
 
 class QuestionNavigation {
-  final StoreViewModel viewModel;
+  final StoreViewModel _viewModel;
 
-  QuestionNavigation(this.viewModel);
+  QuestionNavigation(this._viewModel);
 
   void submitAnswer(String answerKey) {}
 }
