@@ -106,6 +106,10 @@ class QuestionNavigation {
   SelectScreenMeta getSelectScreenMeta() {
     return _viewModel.getSelectScreenMeta();
   }
+
+  String getDataKey() {
+    return _viewModel.currentNode.dataKey;
+  }
 }
 
 typedef FormWidgetBuilder = Widget Function(FormMetadata);
