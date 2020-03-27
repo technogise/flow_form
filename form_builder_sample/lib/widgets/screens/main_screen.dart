@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:formbuilder/formbuilder.dart';
-import 'package:formbuildersample/mappers/screen_mapper.dart';
 
 ///Class for main screen component
 class MainScreen extends StatelessWidget {
@@ -9,11 +8,10 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var formProvider = FormBuilderProvider.of(context);
     return FormBuilderNotifier(builder: (formMetadata) {
       if (formMetadata != null) {
-        return ScreenMapper.getScreen(
-          formMetadata.screenType,
-        );
+        return formProvider.getScreen(formMetadata.screenType);
       }
       return Container();
     });

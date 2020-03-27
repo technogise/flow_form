@@ -2,6 +2,7 @@ library formbuilder;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:formbuilder/form.dart';
 import 'package:formbuilder/question_navigation.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/store.dart';
@@ -27,8 +28,7 @@ class FormBuilderNotifier extends StatelessWidget {
           if (viewModel.currentNode != null) {
             var screenData = viewModel.currentNode.screenData;
             var type = viewModel.currentNode.type;
-            var formMetadata =
-                FormMetadata(type, screenData, QuestionNavigation(viewModel));
+            var formMetadata = FormMetadata(type, screenData);
             return builder(formMetadata);
           }
           return builder(null);
@@ -37,8 +37,11 @@ class FormBuilderNotifier extends StatelessWidget {
 }
 
 class FormBuilderProvider extends InheritedWidget {
+  final FlowForm flowForm;
+
   FormBuilderProvider({
     Key key,
+    @required this.flowForm,
     @required Widget child,
   })  : assert(child != null),
         super(key: key, child: _buildStoreProvider(child));
@@ -56,6 +59,10 @@ class FormBuilderProvider extends InheritedWidget {
   bool updateShouldNotify(FormBuilderProvider old) {
     return child != old.child;
   }
+
+  Widget getScreen(String screenKey) {
+    return flowForm.registerWidgets[screenKey];
+  }
 }
 
 Widget _buildStoreProvider(Widget childWidget) {
@@ -68,9 +75,8 @@ Widget _buildStoreProvider(Widget childWidget) {
 class FormMetadata {
   final String screenType;
   final Map<String, dynamic> metadata;
-  final QuestionNavigation _questionNavigation;
 
-  FormMetadata(this.screenType, this.metadata, this._questionNavigation);
+  FormMetadata(this.screenType, this.metadata);
 }
 
 typedef FormWidgetBuilder = Widget Function(FormMetadata);
