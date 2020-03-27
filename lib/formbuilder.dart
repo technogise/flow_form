@@ -79,10 +79,16 @@ class QuestionNavigation {
 
   QuestionNavigation(this._viewModel);
 
+  @deprecated
   List<String> getCategoryNames() {
-    var categoryNames = [].cast<String>();
     var dashBoardNode = store.state.dashBoardNode;
     return List.from(dashBoardNode.child.keys);
+  }
+
+  @deprecated
+  List<String> getSectionNames() {
+    var sectionNode = store.state.currentNode;
+    return List.from(sectionNode.child.keys);
   }
 
   void submitAnswer(String answerKey) {
@@ -125,6 +131,7 @@ class QuestionNavigation {
 
   /// Dashboard calls
   /// TODO: Refactor and remove
+  @deprecated
   void gotoDashboard() {
     var dashBoardNode = store.state.dashBoardNode;
     store.dispatch(SetCurrentNode(dashBoardNode));
@@ -132,9 +139,16 @@ class QuestionNavigation {
 
   /// Dashboard calls
   /// TODO: Refactor and remove
+  @deprecated
   void gotoCategory(String categoryName) {
     var dashBoardNode = store.state.dashBoardNode;
     store.dispatch(SetCurrentNode(dashBoardNode.child[categoryName]));
+  }
+
+  @deprecated
+  void gotoSection(String sectionName) {
+    var sectionNode = store.state.currentNode;
+    store.dispatch(SetCurrentNode(sectionNode.child[sectionName]));
   }
 }
 
