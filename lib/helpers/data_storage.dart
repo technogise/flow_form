@@ -1,11 +1,13 @@
 import 'dart:io';
+
+import 'package:formbuilder/formbuilder.dart';
+
 import '../redux/actions/actions.dart';
 import '../redux/models/store_view_model.dart';
 import '../redux/store.dart';
 
 ///Class to do all database related operations
 class DataStorage {
-
   ///Function to update data in fireStore
   static void storeData({
     Map<String, dynamic> toUpdate,
@@ -22,8 +24,8 @@ class DataStorage {
   }
 
   ///Function to upload image to fireBase
-  static void uploadImage(StoreViewModel viewModel, File image) {
-    var key = viewModel.currentNode.dataKey;
+  static void uploadImage(QuestionNavigation questionNavigation, File image) {
+    var key = questionNavigation.getDataKey();
     store.dispatch(CaptureUserResponse(toUpdate: {key: image}));
   }
 
@@ -32,5 +34,4 @@ class DataStorage {
       toUpdate: {dataKey: answer},
     );
   }
-
 }
