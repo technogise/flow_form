@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:formbuilder/formbuilder.dart';
 
 import '../redux/actions/actions.dart';
-import '../redux/models/store_view_model.dart';
 import '../redux/store.dart';
 
 ///Class to do all database related operations
@@ -16,8 +15,7 @@ class DataStorage {
   }
 
   ///Function to save data
-  static void saveData({StoreViewModel viewModel, dynamic answer}) {
-    var dataKey = viewModel.currentNode.dataKey;
+  static void saveData({String dataKey, dynamic answer}) {
     DataStorage.storeData(
       toUpdate: {dataKey: answer},
     );
@@ -25,7 +23,7 @@ class DataStorage {
 
   ///Function to upload image to fireBase
   static void uploadImage(QuestionNavigation questionNavigation, File image) {
-    var key = questionNavigation.getDataKey();
+    var key = questionNavigation.getCurrentDataKey();
     store.dispatch(CaptureUserResponse(toUpdate: {key: image}));
   }
 

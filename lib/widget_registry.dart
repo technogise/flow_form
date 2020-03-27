@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:formbuilder/redux/models/abstract_view_model.dart';
 
 //singleton
 class WidgetRegistry {
