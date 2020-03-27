@@ -79,8 +79,17 @@ class QuestionNavigation {
 
   QuestionNavigation(this._viewModel);
 
+  List<String> getCategoryNames() {
+    var categoryNames = [].cast<String>();
+    var dashBoardNode = store.state.dashBoardNode;
+    return List.from(dashBoardNode.child.keys);
+  }
+
   void submitAnswer(String answerKey) {
-    _viewModel.database.saveData(viewModel: _viewModel, answer: answerKey);
+    _viewModel.database.saveData(
+      dataKey: getCurrentDataKey(),
+      answer: answerKey,
+    );
     _viewModel.moveToNextNode(keyForNextQuestion);
   }
 
@@ -98,7 +107,10 @@ class QuestionNavigation {
   }
 
   void goToNext(dynamic answer) {
-    _viewModel.database.saveData(viewModel: _viewModel, answer: answer);
+    _viewModel.database.saveData(
+      dataKey: getCurrentDataKey(),
+      answer: answer,
+    );
     String child = answer is List<dynamic> ? answer.first : answer;
     _viewModel.moveToNextNode(child);
   }
@@ -107,8 +119,22 @@ class QuestionNavigation {
     return _viewModel.getSelectScreenMeta();
   }
 
-  String getDataKey() {
+  String getCurrentDataKey() {
     return _viewModel.currentNode.dataKey;
+  }
+
+  /// Dashboard calls
+  /// TODO: Refactor and remove
+  void gotoDashboard() {
+    var dashBoardNode = store.state.dashBoardNode;
+    store.dispatch(SetCurrentNode(dashBoardNode));
+  }
+
+  /// Dashboard calls
+  /// TODO: Refactor and remove
+  void gotoCategory(String categoryName) {
+    var dashBoardNode = store.state.dashBoardNode;
+    store.dispatch(SetCurrentNode(dashBoardNode.child[categoryName]));
   }
 }
 
