@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:formbuilder/redux/app_state.dart';
-import 'package:formbuilder/json_parser/flow_tree.dart';
-import 'package:formbuilder/redux/models/store_view_model.dart';
-import 'package:formbuildersample/database_impl.dart';
-import 'package:redux/redux.dart';
+import 'package:formbuilder/formbuilder.dart';
 
 import '../components/buttons/submit_button.dart';
 import '../components/text_input.dart';
@@ -24,13 +19,14 @@ class TextInputScreen extends StatefulWidget {
 class _TextInputScreenState extends State<TextInputScreen> {
   String inputText;
 
+  QuestionNavigation _questionNavigation;
+
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, StoreViewModel>(
-      onInit: initializeScreen,
-      converter: StoreViewModel.fromStore,
-      builder: (context, viewModel) {
-        var textInputMeta = viewModel.getTextInputMeta();
+    _questionNavigation = FormBuilderProvider.navigatorOf(context);
+    return FormBuilderNotifier(
+      builder: (metadata) {
+        var textInputMeta = _questionNavigation.getTextInputMeta();
         return Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
@@ -49,7 +45,7 @@ class _TextInputScreenState extends State<TextInputScreen> {
                 active: true,
                 label: textInputMeta.buttonText,
                 onPressed: (label) {
-                  saveData(viewModel);
+                  _questionNavigation.submitAnswer(inputText);
                 },
               )
             ],
@@ -59,13 +55,7 @@ class _TextInputScreenState extends State<TextInputScreen> {
     );
   }
 
-  void initializeScreen(Store<AppState> store) async{
-    var currentNode = store.state.currentNode;
-    inputText = store.state.database.getData(currentNode.dataKey);
-  }
-
-  void saveData(StoreViewModel viewModel) {
-    viewModel.database.saveData(viewModel: viewModel, answer: inputText);
-    viewModel.moveToNextNode(keyForNextQuestion);
+  void initializeScreen() {
+    inputText = _questionNavigation.getCurrentData();
   }
 }
