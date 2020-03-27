@@ -69,9 +69,9 @@ Widget _buildStoreProvider(Widget childWidget) {
 class FormMetadata {
   final String screenType;
   final Map<String, dynamic> metadata;
-  final QuestionNavigation questionNavigation;
+  final QuestionNavigation _questionNavigation;
 
-  FormMetadata(this.screenType, this.metadata, this.questionNavigation);
+  FormMetadata(this.screenType, this.metadata, this._questionNavigation);
 }
 
 class QuestionNavigation {
@@ -95,6 +95,16 @@ class QuestionNavigation {
 
   TextInputMeta getTextInputMeta() {
     return _viewModel.getTextInputMeta();
+  }
+
+  void goToNext(dynamic answer) {
+    _viewModel.database.saveData(viewModel: _viewModel, answer: answer);
+    String child = answer is List<dynamic> ? answer.first : answer;
+    _viewModel.moveToNextNode(child);
+  }
+
+  SelectScreenMeta getSelectScreenMeta() {
+    return _viewModel.getSelectScreenMeta();
   }
 }
 
