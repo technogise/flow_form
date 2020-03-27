@@ -40,7 +40,8 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           appBar: AppBar(
             leading: BackButton(onPressed: () {
-              store.dispatch(NodeActions.prevNode);
+              var questionNavigation = FormBuilderProvider.navigatorOf(context);
+              questionNavigation.gotoPrevious();
             }),
           ),
           body: SafeArea(child: Center(child: MainScreen())),

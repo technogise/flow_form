@@ -2,9 +2,11 @@ library formbuilder;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:formbuilder/redux/actions/actions.dart';
 import 'package:formbuilder/redux/app_state.dart';
 import 'package:formbuilder/redux/store.dart';
 
+import 'json_parser/flow_tree.dart';
 import 'redux/models/store_view_model.dart';
 
 /// A Calculator.
@@ -13,10 +15,10 @@ class Calculator {
   int addOne(int value) => value + 1;
 }
 
-class FormBuilderWidget extends StatelessWidget {
+class FormBuilderNotifier extends StatelessWidget {
   final FormWidgetBuilder builder;
 
-  FormBuilderWidget({@required this.builder});
+  FormBuilderNotifier({@required this.builder});
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +79,23 @@ class QuestionNavigation {
 
   QuestionNavigation(this._viewModel);
 
-  void submitAnswer(String answerKey) {}
+  void submitAnswer(String answerKey) {
+    _viewModel.database.saveData(viewModel: _viewModel, answer: answerKey);
+    _viewModel.moveToNextNode(keyForNextQuestion);
+  }
+
+  void gotoPrevious() {
+    store.dispatch(NodeActions.prevNode);
+  }
+
+  String getCurrentData() {
+    var currentNode = store.state.currentNode;
+    return store.state.database.getCurrentData(currentNode.dataKey);
+  }
+
+  TextInputMeta getTextInputMeta() {
+    return _viewModel.getTextInputMeta();
+  }
 }
 
 typedef FormWidgetBuilder = Widget Function(FormMetadata);

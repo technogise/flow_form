@@ -9,7 +9,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBuilderWidget(builder: (formMetadata) {
+    return FormBuilderNotifier(builder: (formMetadata) {
       if (formMetadata != null) {
         return ScreenMapper.getScreen(
           formMetadata.screenType,
