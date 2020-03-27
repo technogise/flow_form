@@ -18,7 +18,7 @@ class FileUploadScreen extends StatefulWidget {
 class _FileUploadScreenState extends State<FileUploadScreen> {
   @override
   Widget build(BuildContext context) {
-    var questionNavigation = FormBuilderProvider.navigatorOf(context);
+    var questionNavigation = FlowFormProvider.navigatorOf(context);
     var selectScreenMeta = questionNavigation.getSelectScreenMeta();
     final String nextNode = selectScreenMeta.options.first;
     return Column(

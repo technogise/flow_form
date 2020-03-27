@@ -44,14 +44,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBuilderProvider(
+    return FlowFormProvider(
       flowForm: flowForm,
       child: MaterialApp(
         theme: appTheme,
         home: Scaffold(
           appBar: AppBar(
             leading: BackButton(onPressed: () {
-              var questionNavigation = FormBuilderProvider.navigatorOf(context);
+              var questionNavigation = FlowFormProvider.navigatorOf(context);
               questionNavigation.gotoPrevious();
             }),
           ),

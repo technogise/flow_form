@@ -15,10 +15,10 @@ class Calculator {
   int addOne(int value) => value + 1;
 }
 
-class FormBuilderNotifier extends StatelessWidget {
+class FlowFormNotifier extends StatelessWidget {
   final FormWidgetBuilder builder;
 
-  FormBuilderNotifier({@required this.builder});
+  FlowFormNotifier({@required this.builder});
 
   @override
   Widget build(BuildContext context) {
@@ -36,18 +36,18 @@ class FormBuilderNotifier extends StatelessWidget {
   }
 }
 
-class FormBuilderProvider extends InheritedWidget {
+class FlowFormProvider extends InheritedWidget {
   final FlowForm flowForm;
 
-  FormBuilderProvider({
+  FlowFormProvider({
     Key key,
     @required this.flowForm,
     @required Widget child,
   })  : assert(child != null),
         super(key: key, child: _buildStoreProvider(child));
 
-  static FormBuilderProvider of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<FormBuilderProvider>();
+  static FlowFormProvider of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<FlowFormProvider>();
   }
 
   static QuestionNavigation navigatorOf(BuildContext context) {
@@ -56,7 +56,7 @@ class FormBuilderProvider extends InheritedWidget {
   }
 
   @override
-  bool updateShouldNotify(FormBuilderProvider old) {
+  bool updateShouldNotify(FlowFormProvider old) {
     return child != old.child;
   }
 

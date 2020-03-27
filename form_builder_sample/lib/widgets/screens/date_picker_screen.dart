@@ -22,7 +22,7 @@ class _DatePickerState extends State<DatePickerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var questionNavigation = FormBuilderProvider.navigatorOf(context);
+    var questionNavigation = FlowFormProvider.navigatorOf(context);
     var selectScreenMeta = questionNavigation.getSelectScreenMeta();
     return Column(
       mainAxisSize: MainAxisSize.min,
