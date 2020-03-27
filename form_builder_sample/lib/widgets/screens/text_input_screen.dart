@@ -21,7 +21,7 @@ class _TextInputScreenState extends State<TextInputScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final questionNavigation = FormBuilderProvider.navigatorOf(context);
+    final questionNavigation = FlowFormProvider.navigatorOf(context);
     var textInputMeta = questionNavigation.getTextInputMeta();
     return Padding(
       padding: EdgeInsets.all(16.0),

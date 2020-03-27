@@ -12,7 +12,7 @@ class SelectScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var questionNavigation = FormBuilderProvider.navigatorOf(context);
+    var questionNavigation = FlowFormProvider.navigatorOf(context);
     var selectScreenMeta = questionNavigation.getSelectScreenMeta();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

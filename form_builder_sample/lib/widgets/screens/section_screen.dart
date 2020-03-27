@@ -14,7 +14,7 @@ class RenderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var questionNavigation = FormBuilderProvider.navigatorOf(context);
+    var questionNavigation = FlowFormProvider.navigatorOf(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
