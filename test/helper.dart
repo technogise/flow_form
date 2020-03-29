@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:formbuilder/json_parser/flow_node.dart';
+import 'package:flow_form/json_parser/flow_node.dart';
 
 ///Helper class for test
 class Helper {

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:formbuilder/json_parser/flow_node.dart';
-import 'package:formbuilder/json_parser/flow_tree.dart';
+import 'package:flow_form/json_parser/flow_node.dart';
+import 'package:flow_form/json_parser/flow_tree.dart';
 
 import '../helper.dart';
 import 'test_flow_and_test_data.dart';

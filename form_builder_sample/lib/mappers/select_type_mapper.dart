@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:formbuilder/redux/models/store_view_model.dart';
+import 'package:flow_form/redux/models/store_view_model.dart';
 
 import '../widgets/components/select/multi_options.dart';
 import '../widgets/components/select/options.dart';
