@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:formbuilder/formbuilder.dart';
+import 'package:flow_form/flow_form.dart';
 
 void main() {
   test('adds one to input values', () {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:formbuilder/formbuilder.dart';
+import 'package:flow_form/flow_form.dart';
 
 import '../components/buttons/submit_button.dart';
 import '../components/text_input.dart';

@@ -1,11 +1,12 @@
-library formbuilder;
+library flow_form;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:formbuilder/form.dart';
-import 'package:formbuilder/question_navigation.dart';
-import 'package:formbuilder/redux/app_state.dart';
-import 'package:formbuilder/redux/store.dart';
+
+import 'package:flow_form/form.dart';
+import 'package:flow_form/question_navigation.dart';
+import 'package:flow_form/redux/app_state.dart';
+import 'package:flow_form/redux/store.dart';
 
 import 'redux/models/store_view_model.dart';
 

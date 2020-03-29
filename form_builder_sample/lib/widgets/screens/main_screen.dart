@@ -1,5 +1,5 @@
+import 'package:flow_form/flow_form.dart';
 import 'package:flutter/material.dart';
-import 'package:formbuilder/formbuilder.dart';
 
 ///Class for main screen component
 class MainScreen extends StatelessWidget {

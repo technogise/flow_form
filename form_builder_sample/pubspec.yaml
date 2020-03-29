@@ -19,7 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  formbuilder:
+  flow_form:
     path: ../../form_builder/
 
   # The following adds the Cupertino Icons font to your application.

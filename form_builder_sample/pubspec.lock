@@ -197,6 +197,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.11"
+  flow_form:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "0.0.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -214,13 +221,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  formbuilder:
-    dependency: "direct main"
-    description:
-      path: ".."
-      relative: true
-    source: path
-    version: "0.0.1"
   glob:
     dependency: transitive
     description:
