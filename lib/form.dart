@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:formbuilder/helpers/database.dart';
-import 'package:formbuilder/redux/store.dart';
+import 'package:flow_form/helpers/database.dart';
+import 'package:flow_form/redux/store.dart';
 
 class FlowForm {
   String _flowPath;
