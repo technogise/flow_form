@@ -1,3 +1,4 @@
+import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:flow_form/flow_form.dart';
 import 'package:flow_form/form.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var questionNavigation = FlowFormProvider.navigatorOf(context);
+    BackButtonInterceptor.add((value) {
+      if (questionNavigation.isRoot()) {
+        return false;
+      }
+      questionNavigation.gotoPrevious();
+      return true;
+    });
     return FlowFormProvider(
       flowForm: flowForm,
       child: MaterialApp(
@@ -51,7 +60,6 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           appBar: AppBar(
             leading: BackButton(onPressed: () {
-              var questionNavigation = FlowFormProvider.navigatorOf(context);
               questionNavigation.gotoPrevious();
             }),
           ),

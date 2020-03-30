@@ -1,6 +1,5 @@
 import 'package:flow_form/redux/actions/actions.dart';
 import 'package:flow_form/redux/models/store_view_model.dart';
-import 'package:flow_form/redux/models/store_view_model.dart';
 import 'package:flow_form/redux/store.dart';
 
 import 'json_parser/flow_tree.dart';
@@ -32,6 +31,12 @@ class QuestionNavigation {
 
   void gotoPrevious() {
     store.dispatch(NodeActions.prevNode);
+  }
+  /// TODO: Improve readability
+  bool isRoot() {
+    final currentNode = store.state.currentNode;
+    final dashboardNode = store.state.dashBoardNode;
+    return currentNode == dashboardNode;
   }
 
   String getCurrentData() {
