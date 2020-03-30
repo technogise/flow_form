@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:formbuilder/redux/actions/actions.dart';
-import 'package:formbuilder/redux/app_state.dart';
-import 'package:formbuilder/redux/models/abstract_view_model.dart';
-import 'package:formbuilder/redux/models/dashboard_view_model.dart';
+import 'package:flow_form/flow_form.dart';
+import 'package:flow_form/question_navigation.dart';
+
 import '../square_box.dart';
 
 ///Class for dashboard component
@@ -13,36 +11,26 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: StoreConnector<AppState, ViewModel>(
-        onInit: (store) {
-          var dashBoardNode = store.state.dashBoardNode;
-          store.dispatch(SetCurrentNode(dashBoardNode));
-        },
-        converter: DashboardViewModel.fromStore,
-        builder: (context, view) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: getButtonList(view),
-          );
-        },
-      ),
+    var questionNavigation = FlowFormProvider.navigatorOf(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: getButtonList(questionNavigation),
     );
   }
 
   /// Function to get all category name buttons
-  List<Widget> getButtonList(DashboardViewModel viewModel) {
+  List<Widget> getButtonList(QuestionNavigation questionNavigation) {
     var widgets = [].cast<Widget>();
     widgets.add(Expanded(flex: 1, child: SizedBox()));
 
-    for (var categoryName in viewModel.categoryNames) {
+    for (var categoryName in questionNavigation.getCategoryNames()) {
       widgets.add(
         Expanded(
           flex: 1,
           child: SquareBox(
             label: categoryName,
-            onPressed: viewModel.goToCategory,
+            onPressed: questionNavigation.gotoCategory,
           ),
         ),
       );

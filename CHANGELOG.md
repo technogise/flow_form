@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.2] - 30 March 2020.
 
-* TODO: Describe initial release.
+- This is alpha version of the library. The API are subjected to changed

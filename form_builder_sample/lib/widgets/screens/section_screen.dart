@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:formbuilder/redux/app_state.dart';
-import 'package:formbuilder/redux/models/abstract_view_model.dart';
-import 'package:formbuilder/redux/models/section_view_model.dart';
+import 'package:flow_form/flow_form.dart';
+import 'package:flow_form/question_navigation.dart';
 
 import '../components/square_buttons.dart';
 
@@ -16,27 +14,22 @@ class RenderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: StoreConnector<AppState, ViewModel>(
-        converter: SectionViewModel.fromStore,
-        builder: (context, view) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: getButtonList(view),
-          );
-        },
-      ),
+    var questionNavigation = FlowFormProvider.navigatorOf(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: getButtonList(questionNavigation),
     );
   }
 
   /// Function to get all category name buttons
-  List<Widget> getButtonList(SectionViewModel viewModel) {
-    return viewModel.sectionNames
+  List<Widget> getButtonList(QuestionNavigation questionNavigation) {
+    return questionNavigation
+        .getSectionNames()
         .map(
           (categoryName) => SquareButton(
             label: categoryName,
-            onPressed: viewModel.goToSection,
+            onPressed: questionNavigation.gotoSection,
           ),
         )
         .toList();

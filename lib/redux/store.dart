@@ -1,4 +1,4 @@
-import 'package:formbuilder/helpers/database.dart';
+import 'package:flow_form/helpers/database.dart';
 import 'package:redux/redux.dart';
 
 import 'app_state.dart';
@@ -22,3 +22,4 @@ void setFlowAndDataPath(String flowPath, String dataScreenPath) {
 void setupDB(Database database) {
   _globalDB = database;
 }
+

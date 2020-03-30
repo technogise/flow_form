@@ -1,8 +1,5 @@
+import 'package:flow_form/flow_form.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:formbuilder/redux/app_state.dart';
-import 'package:formbuilder/redux/models/store_view_model.dart';
-import 'package:formbuildersample/mappers/screen_mapper.dart';
 
 ///Class for main screen component
 class MainScreen extends StatelessWidget {
@@ -11,16 +8,12 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, StoreViewModel>(
-        converter: StoreViewModel.fromStore,
-        builder: (context, viewModel) {
-          if (viewModel.currentNode != null) {
-            return ScreenMapper.getScreen(
-              viewModel.currentNode.type,
-              viewModel,
-            );
-          }
-          return Container();
-        });
+    var formProvider = FlowFormProvider.of(context);
+    return FlowFormNotifier(builder: (formMetadata) {
+      if (formMetadata != null) {
+        return formProvider.getScreen(formMetadata.screenType);
+      }
+      return Container();
+    });
   }
 }
