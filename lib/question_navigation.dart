@@ -9,12 +9,6 @@ class QuestionNavigation {
 
   QuestionNavigation(this._viewModel);
 
-  @deprecated
-  List<String> getSectionNames() {
-    var sectionNode = store.state.currentNode;
-    return List.from(sectionNode.child.keys);
-  }
-
   void submitAnswer(String answerKey) {
     _viewModel.database.saveData(
       dataKey: getCurrentDataKey(),

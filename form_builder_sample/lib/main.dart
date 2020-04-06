@@ -3,10 +3,8 @@ import 'package:flow_form/flow_form.dart';
 import 'package:flow_form/form.dart';
 import 'package:flutter/material.dart';
 import 'package:formbuildersample/database_impl.dart';
-import 'package:formbuildersample/widgets/screens/dashboard.dart';
 import 'package:formbuildersample/widgets/screens/date_picker_screen.dart';
 import 'package:formbuildersample/widgets/screens/file_upload_screen.dart';
-import 'package:formbuildersample/widgets/screens/section_screen.dart';
 import 'package:formbuildersample/widgets/screens/select_screen.dart';
 import 'package:formbuildersample/widgets/screens/text_input_screen.dart';
 import 'package:hive/hive.dart';
@@ -25,9 +23,7 @@ void main() async {
     ..registerWidgets = {
       SelectScreen.type: SelectScreen(),
       DatePickerScreen.type: DatePickerScreen(),
-      Dashboard.type: Dashboard(),
       TextInputScreen.type: TextInputScreen(),
-      RenderSection.type: RenderSection(),
       FileUploadScreen.type: FileUploadScreen()
     };
 
@@ -84,12 +80,8 @@ Widget switchMapper(String type) {
       return SelectScreen();
     case DatePickerScreen.type:
       return DatePickerScreen();
-    case Dashboard.type:
-      return Dashboard();
     case TextInputScreen.type:
       return TextInputScreen();
-    case RenderSection.type:
-      return RenderSection();
     case FileUploadScreen.type:
       return FileUploadScreen();
     default:

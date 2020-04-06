@@ -19,10 +19,10 @@ class FlowNode {
   String dataKey;
 
   ///variable to store section name of this question
-  String sectionName;
+  ///String sectionName;
 
   ///Constructing node
-  FlowNode(this.screenData, this.prevNode, this.dataKey, [this.sectionName]) {
+  FlowNode(this.screenData, this.prevNode, this.dataKey) {
     if (screenData != null) {
       type = screenData["type"];
     }
