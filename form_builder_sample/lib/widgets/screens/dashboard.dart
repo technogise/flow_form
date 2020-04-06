@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flow_form/flow_form.dart';
 import 'package:flow_form/question_navigation.dart';
+import 'package:flutter/material.dart';
 
 import '../square_box.dart';
 
@@ -24,13 +24,13 @@ class Dashboard extends StatelessWidget {
     var widgets = [].cast<Widget>();
     widgets.add(Expanded(flex: 1, child: SizedBox()));
 
-    for (var categoryName in questionNavigation.getCategoryNames()) {
+    for (var categoryName in questionNavigation.getSectionNames()) {
       widgets.add(
         Expanded(
           flex: 1,
           child: SquareBox(
             label: categoryName,
-            onPressed: questionNavigation.gotoCategory,
+            onPressed: questionNavigation.gotoSection,
           ),
         ),
       );

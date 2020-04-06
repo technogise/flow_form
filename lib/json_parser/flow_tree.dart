@@ -45,34 +45,18 @@ class FlowTree {
   ///Building tree for all categories
   void buildFlowTree(Map<String, dynamic> dashboardFlow) {
     dashBoardNode = buildDashBoardNode();
-    buildCategories(dashBoardNode, dashboardFlow);
+    buildSections(dashboardFlow, dashBoardNode);
     goToDashboard();
   }
 
-  void buildCategories(
-      FlowNode parentNode, Map<String, dynamic> dashboardFlow) {
-    dashboardFlow.forEach((categoryName, categoryFlow) {
-      var categoryNode = FlowNode(
-        {"type": "section"},
-        parentNode,
-        null,
-        categoryName,
-      );
-      buildSections(categoryFlow, categoryNode, categoryName);
-      parentNode.child[categoryName] = categoryNode;
-    });
-  }
-
-  void buildSections(Map<String, dynamic> categoryFlow, FlowNode categoryNode,
-      String categoryName) {
-    categoryFlow.forEach((sectionName, section) {
+  void buildSections(Map<String, dynamic> sectionFlow, FlowNode parentNode) {
+    sectionFlow.forEach((sectionName, section) {
       var sectionNode = build(
         section,
-        categoryNode,
-        categoryName,
+        parentNode,
         sectionName,
       );
-      categoryNode.child[sectionName] = sectionNode;
+      parentNode.child[sectionName] = sectionNode;
     });
   }
 
@@ -81,7 +65,6 @@ class FlowTree {
   FlowNode build(
     Map<String, dynamic> flow,
     FlowNode parent,
-    String categoryName,
     String sectionName,
   ) {
     String screenId = flow[keyForQuestionIds].first;
@@ -91,14 +74,13 @@ class FlowTree {
       screenDetails,
       parent,
       screenId,
-      categoryName,
       sectionName,
     );
 
     //ToDo: Rethink logic for this
     if (flow[keyForQuestionIds].length > 1) {
       flow[keyForQuestionIds].removeAt(0);
-      var childNode = build(flow, currentNode, categoryName, sectionName);
+      var childNode = build(flow, currentNode, sectionName);
       currentNode.child[keyForNextQuestion] = childNode;
       return currentNode;
     }
@@ -110,7 +92,6 @@ class FlowTree {
       var childNode = build(
         nextQuestion,
         currentNode,
-        categoryName,
         sectionName,
       );
       currentNode.child[answerKey] = childNode;

@@ -77,3 +77,26 @@ void initHiveDB() async {
   Hive.init(appDocumentDirectory.path);
   await Hive.openBox("DataBox");
 }
+
+Widget switchMapper(String type) {
+  switch (type) {
+    case SelectScreen.type:
+      return SelectScreen();
+    case DatePickerScreen.type:
+      return DatePickerScreen();
+    case Dashboard.type:
+      return Dashboard();
+    case TextInputScreen.type:
+      return TextInputScreen();
+    case RenderSection.type:
+      return RenderSection();
+    case FileUploadScreen.type:
+      return FileUploadScreen();
+    default:
+      return Container(
+        child: Center(
+          child: Text("No Screen Found"),
+        ),
+      );
+  }
+}

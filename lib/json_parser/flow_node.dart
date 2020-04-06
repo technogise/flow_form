@@ -18,15 +18,11 @@ class FlowNode {
   ///variable to store key to this answer's question
   String dataKey;
 
-  ///variable to store category name of this question
-  String categoryName;
-
   ///variable to store section name of this question
   String sectionName;
 
   ///Constructing node
-  FlowNode(this.screenData, this.prevNode, this.dataKey, this.categoryName,
-      [this.sectionName]) {
+  FlowNode(this.screenData, this.prevNode, this.dataKey, [this.sectionName]) {
     if (screenData != null) {
       type = screenData["type"];
     }

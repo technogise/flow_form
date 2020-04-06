@@ -10,12 +10,6 @@ class QuestionNavigation {
   QuestionNavigation(this._viewModel);
 
   @deprecated
-  List<String> getCategoryNames() {
-    var dashBoardNode = store.state.dashBoardNode;
-    return List.from(dashBoardNode.child.keys);
-  }
-
-  @deprecated
   List<String> getSectionNames() {
     var sectionNode = store.state.currentNode;
     return List.from(sectionNode.child.keys);
@@ -71,14 +65,6 @@ class QuestionNavigation {
   void gotoDashboard() {
     var dashBoardNode = store.state.dashBoardNode;
     store.dispatch(SetCurrentNode(dashBoardNode));
-  }
-
-  /// Dashboard calls
-  /// TODO: Refactor and remove
-  @deprecated
-  void gotoCategory(String categoryName) {
-    var dashBoardNode = store.state.dashBoardNode;
-    store.dispatch(SetCurrentNode(dashBoardNode.child[categoryName]));
   }
 
   @deprecated

@@ -31,7 +31,6 @@ void main() {
       dataJson["Q1"],
       categoryNode,
       null,
-      "CategoryOne",
       "SectionOne",
     );
 
@@ -39,7 +38,6 @@ void main() {
       dataJson["Q2"],
       q1,
       null,
-      "CategoryOne",
       "SectionOne",
     );
 

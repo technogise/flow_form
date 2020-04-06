@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flow_form/flow_form.dart';
 import 'package:flow_form/helpers/data_storage.dart';
+import 'package:flutter/material.dart';
 
 import '../components/comment.dart';
 import '../components/file_uploader/uploader.dart';
@@ -9,7 +9,7 @@ import '../components/question.dart';
 ///Widget to upload files
 class FileUploadScreen extends StatefulWidget {
   ///Static variable to represent the screen type
-  static String type = 'file-upload';
+  static const String type = 'file-upload';
 
   @override
   _FileUploadScreenState createState() => _FileUploadScreenState();
