@@ -1,33 +1,84 @@
 {
   "questionIds": [
-    "ask-name",
-    "occupation-2019",
-    "30-percent-ruling-2019",
-    "passport-details",
-    "own-property-in-netherlands-2019"
+    "category"
   ],
   "nextQuestion": {
-    "branchDependsOn": "yes-no-married",
     "answerBranch": {
-      "no": {
+      "categoryone": {
         "questionIds": [
-          "sell-property-in-netherlands-2019",
-          "filing-tax-with-partner",
-          "marital-status"
+          "section"
         ],
         "nextQuestion": {
-          "branchDependsOn": "marital-status",
           "answerBranch": {
-            "yes": {
+            "sectionone": {
               "questionIds": [
-                "have-children",
-                "dashboard"
+                "ask-name",
+                "occupation-2019"
               ],
               "nextQuestion": {
-                "answerBranch": {}
+                "answerBranch": {
+                  "private": {
+                    "questionIds": [
+                      "ask-name",
+                      "occupation-2019",
+                      "dashboard"
+                    ],
+                    "nextQuestion": {
+                      "answerBranch": {}
+                    }
+                  },
+                  "government": {
+                    "questionIds": [
+                      "passport-details",
+                      "own-property-in-netherlands-2019"
+                    ],
+                    "nextQuestion": {
+                      "answerBranch": {
+                        "no": {
+                          "questionIds": [
+                            "sell-property-in-netherlands-2019",
+                            "filing-tax-with-partner",
+                            "dashboard"
+                          ],
+                          "nextQuestion": {
+                            "answerBranch": {}
+                          }
+                        },
+                        "yes": {
+                          "questionIds": [
+                            "buy-property-in-netherlands-2019",
+                            "filing-tax-with-partner",
+                            "marital-status"
+                          ],
+                          "nextQuestion": {
+                            "answerBranch": {
+                              "yes": {
+                                "questionIds": [
+                                  "have-children",
+                                  "dashboard"
+                                ],
+                                "nextQuestion": {
+                                  "answerBranch": {}
+                                }
+                              },
+                              "no": {
+                                "questionIds": [
+                                  "dashboard"
+                                ],
+                                "nextQuestion": {
+                                  "answerBranch": {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             },
-            "no": {
+            "sectiontwo": {
               "questionIds": [
                 "dashboard"
               ],
@@ -38,7 +89,7 @@
           }
         }
       },
-      "yes": {
+      "categorytwo": {
         "questionIds": [
           "buy-property-in-netherlands-2019",
           "sell-property-in-netherlands-2019",
