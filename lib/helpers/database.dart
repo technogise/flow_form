@@ -3,5 +3,5 @@ class Database {
   void saveData({String dataKey, dynamic answer}) {}
 
   /// Function to get data
-  String getData(String dataKey) {}
+  String getData(String dataKey) => '';
 }

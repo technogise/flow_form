@@ -13,11 +13,12 @@ analyzer:
 # Explicitly disable only the rules we do not want.
 linter:
   rules:
-    public_member_api_docs : false
+    public_member_api_docs: false
     lines_longer_than_80_chars: false
     prefer_double_quotes: false
     omit_local_variable_types: false
-    prefer_final_locals : false
-    unnecessary_final : false
-    unnecessary_getters_setters : false
-    use_to_and_as_if_applicable : false
+    prefer_final_locals: false
+    unnecessary_final: false
+    unnecessary_getters_setters: false
+    use_to_and_as_if_applicable: false
+    avoid_as: false

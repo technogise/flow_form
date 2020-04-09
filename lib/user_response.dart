@@ -1,7 +1,7 @@
 ///Class for capturing user response
 class UserResponse {
   ///variable to store user responses
-  Map<String, dynamic> answers = {};
+  Map<String, dynamic> answers = <String, dynamic>{};
 
   ///Function to add answer
   void add(Map<String, dynamic> toUpdate) {

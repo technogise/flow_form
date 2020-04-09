@@ -22,7 +22,7 @@ class DataStorage {
 
   ///Function to upload image to fireBase
   static void uploadImage(QuestionNavigation questionNavigation, File image) {
-    var key = questionNavigation.getCurrentDataKey();
+    String key = questionNavigation.getCurrentDataKey();
     store.dispatch(CaptureUserResponse(toUpdate: {key: image}));
   }
 
