@@ -73,4 +73,3 @@ void initHiveDB() async {
   Hive.init(appDocumentDirectory.path);
   await Hive.openBox("DataBox");
 }
-

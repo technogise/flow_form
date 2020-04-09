@@ -29,9 +29,7 @@ class FlowNode {
   }
 
   ///Returns if this question has more subsequent question
-  bool hasChild() {
-    return child.length > 0;
-  }
+  bool hasChild() => child.isNotEmpty;
 
   ///Gives the next question node
   FlowNode getChild(String answer) {

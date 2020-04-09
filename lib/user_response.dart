@@ -5,7 +5,7 @@ class UserResponse {
 
   ///Function to add answer
   void add(Map<String, dynamic> toUpdate) {
-    for (var key in toUpdate.keys) {
+    for (String key in toUpdate.keys) {
       answers[key] = toUpdate[key];
     }
   }

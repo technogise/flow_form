@@ -1,0 +1,23 @@
+# Enable all rules by default
+include: all_lint_rules.yaml
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+  errors:
+    # Otherwise cause the import of all_lint_rules to warn because of some rules conflicts.
+    # The conflicts are fixed in this file instead, so we can safely ignore the warning.
+    included_file_warning: ignore
+
+
+# Explicitly disable only the rules we do not want.
+linter:
+  rules:
+    public_member_api_docs : false
+    lines_longer_than_80_chars: false
+    prefer_double_quotes: false
+    omit_local_variable_types: false
+    prefer_final_locals : false
+    unnecessary_final : false
+    unnecessary_getters_setters : false
+    use_to_and_as_if_applicable : false
