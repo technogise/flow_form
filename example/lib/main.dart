@@ -2,11 +2,11 @@ import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:flow_form/flow_form.dart';
 import 'package:flow_form/form.dart';
 import 'package:flutter/material.dart';
-import 'package:formbuildersample/database_impl.dart';
-import 'package:formbuildersample/widgets/screens/date_picker_screen.dart';
-import 'package:formbuildersample/widgets/screens/file_upload_screen.dart';
-import 'package:formbuildersample/widgets/screens/select_screen.dart';
-import 'package:formbuildersample/widgets/screens/text_input_screen.dart';
+import 'package:example/database_impl.dart';
+import 'package:example/widgets/screens/date_picker_screen.dart';
+import 'package:example/widgets/screens/file_upload_screen.dart';
+import 'package:example/widgets/screens/select_screen.dart';
+import 'package:example/widgets/screens/text_input_screen.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 

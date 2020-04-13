@@ -1,6 +1,6 @@
 import 'package:flow_form/flow_form.dart';
 import 'package:flutter/material.dart';
-import 'package:formbuildersample/mappers/select_type_mapper.dart';
+import 'package:example/mappers/select_type_mapper.dart';
 
 ///Class for main screen component
 class MainScreen extends StatelessWidget {
