@@ -1,5 +1,5 @@
 name: flow_form
-description: A new Flutter package.
+description: This is form builder library help to design form flow using flow.json file in given JSON Format.
 version: 0.0.2
 homepage: https://github.com/technogise/flow_form
 

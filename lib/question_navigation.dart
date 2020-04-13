@@ -28,11 +28,6 @@ class QuestionNavigation {
     return currentNode == dashboardNode;
   }
 
-  String getCurrentData() {
-    FlowNode currentNode = store.state.currentNode;
-    return store.state.database.getCurrentData(currentNode.dataKey);
-  }
-
   TextInputMeta getTextInputMeta() => _viewModel.getTextInputMeta();
 
   void goToNext(String answer) {
