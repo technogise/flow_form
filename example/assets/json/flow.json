@@ -21,7 +21,7 @@
                     "questionIds": [
                       "ask-name",
                       "occupation-2019",
-                      "dashboard"
+                      "end"
                     ],
                     "nextQuestion": {
                       "answerBranch": {}
@@ -38,7 +38,7 @@
                           "questionIds": [
                             "sell-property-in-netherlands-2019",
                             "filing-tax-with-partner",
-                            "dashboard"
+                            "end"
                           ],
                           "nextQuestion": {
                             "answerBranch": {}
@@ -55,7 +55,7 @@
                               "yes": {
                                 "questionIds": [
                                   "have-children",
-                                  "dashboard"
+                                  "end"
                                 ],
                                 "nextQuestion": {
                                   "answerBranch": {}
@@ -63,7 +63,7 @@
                               },
                               "no": {
                                 "questionIds": [
-                                  "dashboard"
+                                  "end"
                                 ],
                                 "nextQuestion": {
                                   "answerBranch": {}
@@ -80,7 +80,7 @@
             },
             "sectiontwo": {
               "questionIds": [
-                "dashboard"
+                "end"
               ],
               "nextQuestion": {
                 "answerBranch": {}
@@ -102,7 +102,7 @@
             "yes": {
               "questionIds": [
                 "have-children",
-                "dashboard"
+                "end"
               ],
               "nextQuestion": {
                 "answerBranch": {}
@@ -110,7 +110,7 @@
             },
             "no": {
               "questionIds": [
-                "dashboard"
+                "end"
               ],
               "nextQuestion": {
                 "answerBranch": {}

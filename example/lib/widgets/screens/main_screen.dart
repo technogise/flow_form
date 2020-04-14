@@ -9,9 +9,10 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var formProvider = FlowFormProvider.of(context);
     return FlowFormNotifier(builder: (formMetadata) {
       if (formMetadata != null) {
-        return switchMapper(formMetadata.screenType);
+        return formProvider.getWidget(formMetadata.screenType);
       }
       return Container();
     });

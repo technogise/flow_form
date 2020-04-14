@@ -1,30 +1,40 @@
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:flow_form/flow_form.dart';
 import 'package:flow_form/form.dart';
+import 'package:flow_form/question_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:example/database_impl.dart';
-import 'package:example/widgets/screens/date_picker_screen.dart';
-import 'package:example/widgets/screens/file_upload_screen.dart';
-import 'package:example/widgets/screens/select_screen.dart';
-import 'package:example/widgets/screens/text_input_screen.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
-
+import 'database_impl.dart';
 import 'styles/theme.dart';
+import 'widgets/screens/date_picker_screen.dart';
+import 'widgets/screens/file_upload_screen.dart';
 import 'widgets/screens/main_screen.dart';
+import 'widgets/screens/select_screen.dart';
+import 'widgets/screens/text_input_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   initHiveDB();
 
-  final flowFormBuilder = FlowFormBuilder("assets/json/flow.json")
-    ..screenMetaPath = "assets/json/screen_data.json"
+  final flowFormBuilder = FlowFormBuilder('assets/json/flow.json')
+    ..screenMetaPath = 'assets/json/screen_data.json'
     ..database = DatabaseImpl()
-    ..registerWidgets = {
-      SelectScreen.type: SelectScreen(),
-      DatePickerScreen.type: DatePickerScreen(),
-      TextInputScreen.type: TextInputScreen(),
-      FileUploadScreen.type: FileUploadScreen()
+    ..registerWidget = (String type) {
+      switch (type) {
+        case SelectScreen.type:
+          return SelectScreen();
+        case DatePickerScreen.type:
+          return DatePickerScreen();
+        case TextInputScreen.type:
+          return TextInputScreen();
+        case FileUploadScreen.type:
+          return FileUploadScreen();
+        default:
+          return const Center(
+            child: Text('Form Ends Here'),
+          );
+      }
     };
 
   runApp(MyApp(flowFormBuilder.build()));
@@ -32,16 +42,17 @@ void main() async {
 
 ///MyApp entry of form builder sample
 class MyApp extends StatelessWidget {
+  MyApp(this.flowForm);
+
   /// Static variable to refer this class in routes
   static const id = '/';
 
   final FlowForm flowForm;
 
-  MyApp(this.flowForm);
-
   @override
   Widget build(BuildContext context) {
-    var questionNavigation = FlowFormProvider.navigatorOf(context);
+    QuestionNavigation questionNavigation =
+        FlowFormProvider.navigatorOf(context);
     BackButtonInterceptor.add((value) {
       if (questionNavigation.isRoot()) {
         return false;

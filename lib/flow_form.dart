@@ -17,29 +17,27 @@ class Calculator {
 }
 
 class FlowFormNotifier extends StatelessWidget {
-  final FormWidgetBuilder builder;
-
   FlowFormNotifier({@required this.builder});
 
+  final FormWidgetBuilder builder;
+
   @override
-  Widget build(BuildContext context) {
-    return StoreConnector<AppState, StoreViewModel>(
-        converter: StoreViewModel.fromStore,
-        builder: (context, viewModel) {
-          if (viewModel.currentNode != null) {
-            var screenData = viewModel.currentNode.screenData;
-            var type = viewModel.currentNode.type;
-            var formMetadata = FormMetadata(type, screenData);
-            return builder(formMetadata);
-          }
-          return builder(null);
-        });
-  }
+  Widget build(BuildContext context) =>
+      StoreConnector<AppState, StoreViewModel>(
+          converter: StoreViewModel.fromStore,
+          builder: (context, viewModel) {
+            if (viewModel.currentNode != null) {
+              Map<String, dynamic> screenData =
+                  viewModel.currentNode.screenData;
+              String type = viewModel.currentNode.type;
+              FormMetadata formMetadata = FormMetadata(type, screenData);
+              return builder(formMetadata);
+            }
+            return builder(null);
+          });
 }
 
 class FlowFormProvider extends InheritedWidget {
-  final FlowForm flowForm;
-
   FlowFormProvider({
     Key key,
     @required this.flowForm,
@@ -47,37 +45,32 @@ class FlowFormProvider extends InheritedWidget {
   })  : assert(child != null),
         super(key: key, child: _buildStoreProvider(child));
 
-  static FlowFormProvider of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<FlowFormProvider>();
-  }
+  final FlowForm flowForm;
+
+  static FlowFormProvider of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<FlowFormProvider>();
 
   static QuestionNavigation navigatorOf(BuildContext context) {
-    var storeViewModel = StoreViewModel.fromStore(store);
+    StoreViewModel storeViewModel = StoreViewModel.fromStore(store);
     return QuestionNavigation(storeViewModel);
   }
 
   @override
-  bool updateShouldNotify(FlowFormProvider old) {
-    return child != old.child;
-  }
+  bool updateShouldNotify(FlowFormProvider old) => child != old.child;
 
-  Widget getScreen(String screenKey) {
-    return flowForm.registerWidgets[screenKey];
-  }
+  Widget getWidget(String screenKey) => flowForm.registerWidget(screenKey);
 }
 
-Widget _buildStoreProvider(Widget childWidget) {
-  return StoreProvider<AppState>(
-    store: store,
-    child: childWidget,
-  );
-}
+Widget _buildStoreProvider(Widget childWidget) => StoreProvider<AppState>(
+      store: store,
+      child: childWidget,
+    );
 
 class FormMetadata {
+  FormMetadata(this.screenType, this.metadata);
+
   final String screenType;
   final Map<String, dynamic> metadata;
-
-  FormMetadata(this.screenType, this.metadata);
 }
 
 typedef FormWidgetBuilder = Widget Function(FormMetadata);

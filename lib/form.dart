@@ -8,7 +8,7 @@ class FlowForm {
     _flowPath = formBuilder.flowPath;
     _screenMetaPath = formBuilder.screenMetaPath;
     _database = formBuilder.database;
-    registerWidgets.addAll(formBuilder.registerWidgets);
+    registerWidget = formBuilder.registerWidget;
     setFlowAndDataPath(_flowPath, _screenMetaPath);
     setupDB(_database);
   }
@@ -16,7 +16,7 @@ class FlowForm {
   String _flowPath;
   String _screenMetaPath;
   Database _database;
-  final Map<String, Widget> registerWidgets = <String, Widget>{};
+  RegisterWidget registerWidget;
 }
 
 class FlowFormBuilder {
@@ -25,7 +25,9 @@ class FlowFormBuilder {
   final String flowPath;
   String screenMetaPath;
   Database database;
-  Map<String, Widget> registerWidgets = <String, Widget>{};
+  RegisterWidget registerWidget;
 
   FlowForm build() => FlowForm(this);
 }
+
+typedef Widget RegisterWidget(String type);

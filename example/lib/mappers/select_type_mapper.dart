@@ -33,23 +33,3 @@ class SelectMapper {
     return mapper[selectScreenMeta.optionType];
   }
 }
-
-
-Widget switchMapper(String type) {
-  switch (type) {
-    case SelectScreen.type:
-      return SelectScreen();
-    case DatePickerScreen.type:
-      return DatePickerScreen();
-    case TextInputScreen.type:
-      return TextInputScreen();
-    case FileUploadScreen.type:
-      return FileUploadScreen();
-    default:
-      return Container(
-        child: Center(
-          child: Text("No Screen Found"),
-        ),
-      );
-  }
-}

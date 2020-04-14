@@ -1,6 +1,6 @@
 # FormBuilder
 
-This is form builder library help to design form flow using flow.json file having [**JSON Format**](#json-format). This file has the flow design by the developer which convert internally this into a tree structure and will main the states using flutter redux library.
+This is flow form library help to design a flow of form using a json file having [**JSON Format**](#json-format). This file has the flow design by the developer which convert internally this into a tree structure and will main the states using flutter redux library.
 
 ## Getting Started
 

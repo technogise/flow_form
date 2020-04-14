@@ -21,4 +21,5 @@ linter:
     unnecessary_final: false
     unnecessary_getters_setters: false
     use_to_and_as_if_applicable: false
+    avoid_types_on_closure_parameters: false
     avoid_as: false
