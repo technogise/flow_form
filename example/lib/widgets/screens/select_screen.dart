@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flow_form/flow_form.dart';
+import 'package:flutter/material.dart';
 
 import '../../mappers/select_type_mapper.dart';
 import '../components/comment.dart';

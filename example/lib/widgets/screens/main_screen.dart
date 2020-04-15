@@ -1,5 +1,6 @@
 import 'package:flow_form/flow_form.dart';
 import 'package:flutter/material.dart';
+import 'package:example/mappers/select_type_mapper.dart';
 
 ///Class for main screen component
 class MainScreen extends StatelessWidget {
@@ -11,7 +12,7 @@ class MainScreen extends StatelessWidget {
     var formProvider = FlowFormProvider.of(context);
     return FlowFormNotifier(builder: (formMetadata) {
       if (formMetadata != null) {
-        return formProvider.getScreen(formMetadata.screenType);
+        return formProvider.getWidget(formMetadata.screenType);
       }
       return Container();
     });

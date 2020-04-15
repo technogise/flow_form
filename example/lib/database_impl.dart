@@ -11,11 +11,9 @@ class DatabaseImpl implements Database {
     );
     var box = Hive.box('DataBox');
     box.put(dataKey, answer);
+    print("Data Key :" + dataKey);
+    print("Answer  :" + answer);
   }
-
-
-  ///Function to upload image to fireBase
-  void uploadImage() {}
 
   String getData(String dataKey) {
     var box = Hive.box('DataBox');

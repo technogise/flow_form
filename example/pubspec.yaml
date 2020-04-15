@@ -1,4 +1,4 @@
-name: formbuildersample
+name: example
 description: A new Flutter application.
 
 # The following defines the version and build number for your application.
@@ -19,8 +19,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flow_form:
-    path: ../../flow_form/
+  flow_form: ^0.1.0
+    #path: ../../flow_form/
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -32,6 +32,7 @@ dependencies:
   hive: ^1.4.1+1
   hive_flutter: ^0.3.0+2
   path_provider: ^1.3.0
+  back_button_interceptor: ^4.2.3
 
 dev_dependencies:
   flutter_test:

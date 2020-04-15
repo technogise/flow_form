@@ -20,9 +20,8 @@ void main() {
       Map<String, dynamic>.from(TestData.basicFlowForTwoLinearQuestions),
     );
 
-    var dashboardNode = FlowNode({"type": "dashboard"}, null, null, null);
-    var categoryNode =
-        FlowNode({"type": "yes"}, dashboardNode, "CategoryOne", null);
+    var dashboardNode = FlowNode({"type": "dashboard"}, null, null);
+    var categoryNode = FlowNode({"type": "yes"}, dashboardNode, null);
 
     dashboardNode.child["CategoryOne"] = categoryNode;
     categoryNode.prevNode = dashboardNode;
@@ -31,16 +30,12 @@ void main() {
       dataJson["Q1"],
       categoryNode,
       null,
-      "CategoryOne",
-      "SectionOne",
     );
 
     var q2 = FlowNode(
       dataJson["Q2"],
       q1,
       null,
-      "CategoryOne",
-      "SectionOne",
     );
 
     q1.child = {"nextQuestion": q2};

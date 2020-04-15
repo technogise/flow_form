@@ -44,61 +44,23 @@ class FlowTree {
 
   ///Building tree for all categories
   void buildFlowTree(Map<String, dynamic> dashboardFlow) {
-    dashBoardNode = buildDashBoardNode();
-    buildCategories(dashBoardNode, dashboardFlow);
+    final flowNode = build(dashboardFlow, buildDashBoardNode());
+    dashBoardNode = flowNode;
     goToDashboard();
-  }
-
-  void buildCategories(
-      FlowNode parentNode, Map<String, dynamic> dashboardFlow) {
-    dashboardFlow.forEach((categoryName, categoryFlow) {
-      var categoryNode = FlowNode(
-        {"type": "section"},
-        parentNode,
-        null,
-        categoryName,
-      );
-      buildSections(categoryFlow, categoryNode, categoryName);
-      parentNode.child[categoryName] = categoryNode;
-    });
-  }
-
-  void buildSections(Map<String, dynamic> categoryFlow, FlowNode categoryNode,
-      String categoryName) {
-    categoryFlow.forEach((sectionName, section) {
-      var sectionNode = build(
-        section,
-        categoryNode,
-        categoryName,
-        sectionName,
-      );
-      categoryNode.child[sectionName] = sectionNode;
-    });
   }
 
   //ToDo: Rename flow to category or current node
   ///Build tree for given
-  FlowNode build(
-    Map<String, dynamic> flow,
-    FlowNode parent,
-    String categoryName,
-    String sectionName,
-  ) {
+  FlowNode build(Map<String, dynamic> flow, FlowNode parent) {
     String screenId = flow[keyForQuestionIds].first;
     Map<String, dynamic> screenDetails = screenData[screenId];
 
-    var currentNode = FlowNode(
-      screenDetails,
-      parent,
-      screenId,
-      categoryName,
-      sectionName,
-    );
+    var currentNode = FlowNode(screenDetails, parent, screenId);
 
     //ToDo: Rethink logic for this
     if (flow[keyForQuestionIds].length > 1) {
       flow[keyForQuestionIds].removeAt(0);
-      var childNode = build(flow, currentNode, categoryName, sectionName);
+      var childNode = build(flow, currentNode);
       currentNode.child[keyForNextQuestion] = childNode;
       return currentNode;
     }
@@ -107,12 +69,7 @@ class FlowTree {
     currentNode.dependsOn = childDetails[nextQuestionDependsOn];
     //ToDo: Make this readable
     childDetails[answersBranch].forEach((answerKey, nextQuestion) {
-      var childNode = build(
-        nextQuestion,
-        currentNode,
-        categoryName,
-        sectionName,
-      );
+      var childNode = build(nextQuestion, currentNode);
       currentNode.child[answerKey] = childNode;
     });
     return currentNode;
@@ -126,6 +83,6 @@ class FlowTree {
 
   ///Function which gives dashboard node
   FlowNode buildDashBoardNode() {
-    return FlowNode({"type": "dashboard"}, null, null, null);
+    return FlowNode({"type": "dashboard"}, null, "dashboard");
   }
 }

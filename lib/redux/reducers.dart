@@ -4,11 +4,9 @@ import 'reducers/dashboard_node_reducers.dart';
 import 'reducers/user_response_reducers.dart';
 
 ///Class for mapping reducers
-AppState appStateReducer(AppState state, dynamic action) {
-  return AppState(
+AppState appStateReducer(AppState state, dynamic action) => AppState(
       currentNode: currentNodeReducers(state.currentNode, action),
       dashBoardNode: dashBoardNodeReducer(state.dashBoardNode, action),
       userResponse: userResponseReducer(state.userResponse, action),
       database: state.database
   );
-}

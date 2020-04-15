@@ -28,8 +28,8 @@ class Helper {
 
   static bool hasSameDataKey(FlowNode n1, FlowNode n2) => n1.dataKey == n2.dataKey;
 
-  static bool hasSameSectionName(FlowNode n1, FlowNode n2) =>
-      n1.categoryName == n2.categoryName;
+  static bool hasSameSectionName(FlowNode n1, FlowNode n2) => true;
+      ///n1.categoryName == n2.categoryName;
 
   static bool hasSameAnswers(FlowNode n1, FlowNode n2) {
     Function eq = const ListEquality().equals;

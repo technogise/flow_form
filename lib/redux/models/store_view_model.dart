@@ -1,14 +1,21 @@
-import 'package:flow_form/json_parser/flow_tree.dart';
-import 'package:flow_form/helpers/database.dart';
 import 'package:redux/redux.dart';
 
+import '../../helpers/database.dart';
 import '../../json_parser/flow_node.dart';
+import '../../json_parser/flow_tree.dart';
 import '../actions/actions.dart';
 import '../app_state.dart';
 import 'abstract_view_model.dart';
 
 ///Class for filtering info given to components from store
 class StoreViewModel extends ViewModel {
+  ///Constructor
+  StoreViewModel(
+      {this.currentNode,
+      this.moveToNextNode,
+      this.selectedValue,
+      this.database});
+
   ///variable to store current node
   FlowNode currentNode;
 
@@ -20,12 +27,9 @@ class StoreViewModel extends ViewModel {
 
   Database database;
 
-  ///Constructor
-  StoreViewModel({this.currentNode, this.moveToNextNode, this.selectedValue,  this.database});
-
   ///Create from store to generate Tree View Model
   static StoreViewModel fromStore(Store<AppState> store) {
-    var state = store.state;
+    AppState state = store.state;
     return StoreViewModel(
         currentNode: state.currentNode,
         moveToNextNode: (answer) {
@@ -37,7 +41,7 @@ class StoreViewModel extends ViewModel {
 
   //ToDo: Please add docs
   static dynamic getSelectedValue(Store<AppState> store) {
-    var state = store.state;
+    AppState state = store.state;
     if (state.currentNode != null) {
       return state.userResponse.get(state.currentNode.dataKey);
     }
@@ -50,17 +54,18 @@ class StoreViewModel extends ViewModel {
   /// or objects
   dynamic getScreenData(String key) => currentNode.screenData[key];
 
-  TextInputMeta getTextInputMeta() {
-    return TextInputMeta(
-      getScreenData("hint"),
-      getScreenData("buttonText"),
-    );
-  }
+  TextInputMeta getTextInputMeta() => TextInputMeta(
+        getScreenData('hint') as String,
+        getScreenData('buttonText') as String,
+      );
 
-  SelectScreenMeta getSelectScreenMeta() {
-    return SelectScreenMeta(getScreenData("question"), getScreenData("label"),
-        getScreenData("select-type"), getScreenData("options"), selectedValue);
-  }
+  SelectScreenMeta getSelectScreenMeta() => SelectScreenMeta(
+        getScreenData('question') as String,
+        getScreenData('label') as String,
+        getScreenData('select-type') as String,
+        getScreenData('options') as List<dynamic>,
+        selectedValue as String,
+      );
 
   void goToNextQuestion() {
     moveToNextNode(keyForNextQuestion);
@@ -68,19 +73,19 @@ class StoreViewModel extends ViewModel {
 }
 
 class TextInputMeta {
+  TextInputMeta(this.hintText, this.buttonText);
+
   final String hintText;
   final String buttonText;
-
-  TextInputMeta(this.hintText, this.buttonText);
 }
 
 class SelectScreenMeta {
+  SelectScreenMeta(this.question, this.comment, this.optionType, this.options,
+      this.selectedValue);
+
   final String question;
   final String comment;
   final String optionType;
   final String selectedValue;
   final List<dynamic> options;
-
-  SelectScreenMeta(this.question, this.comment, this.optionType, this.options,
-      this.selectedValue);
 }

@@ -18,24 +18,18 @@ class FlowNode {
   ///variable to store key to this answer's question
   String dataKey;
 
-  ///variable to store category name of this question
-  String categoryName;
-
   ///variable to store section name of this question
-  String sectionName;
+  ///String sectionName;
 
   ///Constructing node
-  FlowNode(this.screenData, this.prevNode, this.dataKey, this.categoryName,
-      [this.sectionName]) {
+  FlowNode(this.screenData, this.prevNode, this.dataKey) {
     if (screenData != null) {
       type = screenData["type"];
     }
   }
 
   ///Returns if this question has more subsequent question
-  bool hasChild() {
-    return child.length > 0;
-  }
+  bool hasChild() => child.isNotEmpty;
 
   ///Gives the next question node
   FlowNode getChild(String answer) {
