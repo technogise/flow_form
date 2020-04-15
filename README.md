@@ -1,6 +1,6 @@
 # Flow Form
 
-This is Flow Form library help to design a flow of form using a json file in given [Format](#json-format).
+This is Flow Form library help to design a flow of form using a JSON file in given [Format](#json-format).
 
 
 
@@ -11,14 +11,15 @@ This is Flow Form library help to design a flow of form using a json file in giv
 
 ### How it works
 
-The file will have flow which will be converted internally into a tree structure which given branching in the file and will maintain and update the states of the form using the redux internally. Currently it's acyclic tree.
+The file will have a flow which will be converted internally into a tree structure with given branching in the file and will maintain and update the states of the form using the redux internally. Currently, it's an acyclic tree.
+
 
 
 ## Getting Started
 
-First we need tp create a json file respresnting our form flow using the given format and then provide that path to library.
+First, we need to create a JSON file representing our form flow using the given [format](#json-format) and then provide that path to the library.
 
-It consist of three component FlowForm.
+It consists of three component FlowForm to get started.
 
 1. Builder
 2. Provider
@@ -26,7 +27,7 @@ It consist of three component FlowForm.
 
 ### 1. Build the Form
 
-We need to build our form by setting required json flow file path and other optinal properties.
+We need to build our form by setting the required JSON flow file path and other optional properties.
 
 ```dart
 final flowFormBuilder = FlowFormBuilder('assets/json/flow.json')
@@ -55,7 +56,7 @@ final FlowForm = flowFormBuilder.build();
 
 ### 2. FlowFormProvider
 
-We need to pass this `FlowForm` which we got from above builder to `FlowFormProvider` widget.
+We need to pass the `FlowForm` which we got from above builder to `FlowFormProvider` widget.
 
 ```dart
 FlowFormProvider(
@@ -66,11 +67,11 @@ FlowFormProvider(
 )
 ```
 
-This best practices is to wrap this `FlowFormProvider` to the top most parent widget.
+This best practice is to wrap this FlowFormProvider to the topmost parent widget.
 
 ### 3. FlowFormNotifier
 
-In order to get the update to to display a form. We need to wrap the widget into `FlowFormNotifier` which requires a widget in return we want to build on the basic of current `formMetadata` .
+To get the update to to display a form, we need to wrap the widget into `FlowFormNotifier` which requires a widget in return we want to build on the basic of current `formMetadata` .
 
 ```dart
 @override
@@ -85,13 +86,13 @@ Widget build(BuildContext context) {
 }
 ```
 
-We can use `formProvider.getWidget(type)` to get widget we registered in the `FlowFormBuilder`
+We can use `formProvider.getWidget(type)` to get widget we registered in the `FlowFormBuilder`.
 
 
 
 ## Setup Custom Database
 
-We can also add our own database implementation by implementing the `Database` class and setting up in the app like this.
+We can also add our database implementation by implementing the `Database` class and setting up in the app like this.
 
 ```dart
 my_database_impl.dart
@@ -177,6 +178,8 @@ This is how ths json should be formatted.
 3. Keep the all json keys in camel case to keep the consistency.
 
 
+
+Made with ❤️ from  [Technogise](https://technogise.com/)
 
 ## BSD 3-Clause License
 
