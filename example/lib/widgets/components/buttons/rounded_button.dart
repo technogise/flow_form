@@ -44,6 +44,7 @@ class RoundedButton extends StatelessWidget {
           height: 42.0,
           child: Text(
             label,
+            key: ValueKey(label),
             style: isPressed
                 ? AppText.pressedButtonText
                 : AppText.unPressedButtonText,

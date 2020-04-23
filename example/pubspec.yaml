@@ -20,7 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   flow_form: ^0.1.0
-    #path: ../../flow_form/
+  #path: ../../flow_form/
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -35,8 +35,11 @@ dependencies:
   back_button_interceptor: ^4.2.3
 
 dev_dependencies:
+  flutter_driver:
+    sdk: flutter
   flutter_test:
     sdk: flutter
+  test: any
   hive_generator: ^0.7.0+2
   build_runner: ^1.8.0
 

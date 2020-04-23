@@ -18,6 +18,7 @@ class QuestionCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
           child: Text(
             text,
+            key: ValueKey(text),
             style: TextStyle(fontSize: 20),
           ),
         ),
