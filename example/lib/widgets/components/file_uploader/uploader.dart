@@ -25,8 +25,8 @@ class _FileUploaderState extends State<FileUploader> {
 
   void _pickFile(String label) async {
     var selectedFile = await FilePicker.getFile(
-      type: FileType.CUSTOM,
-      fileExtension: 'pdf',
+      type: FileType.custom,
+      allowedExtensions: ['pdf'],
     );
     setState(() {
       file = selectedFile;
