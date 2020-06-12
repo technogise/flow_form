@@ -9,16 +9,13 @@ import 'test_flow_and_test_data.dart';
 void main() {
   setUp(WidgetsFlutterBinding.ensureInitialized);
 
-  test('Tree should make nodes out of json object', () {
-    var flowPath = "packages/formbuilder/assets/json/flow.json";
-    var dataPath = "packages/formbuilder/assets/json/screen_data.json";
+  test('Tree should make nodes out of json object', () async {
+    var flowPath = "test_resources/json/flow.json";
+    var dataPath = "test_resources/json/screen_data.json";
+
     var tree = FlowTree(flowPath, dataPath);
     var dataJson = TestData.basicDataForTwoLinearQuestions;
     tree.screenData = dataJson;
-
-    tree.buildFlowTree(
-      Map<String, dynamic>.from(TestData.basicFlowForTwoLinearQuestions),
-    );
 
     var dashboardNode = FlowNode({"type": "dashboard"}, null, null);
     var categoryNode = FlowNode({"type": "yes"}, dashboardNode, null);
