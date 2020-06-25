@@ -27,6 +27,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  assets:
+    - test_resources/json/
+
 
 # To add assets to your package, add an assets section, like this:
 # assets:
