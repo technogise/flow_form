@@ -1,0 +1,222 @@
+{
+  "ask-name": {
+    "label": "Q 1",
+    "question": "May I know your name",
+    "buttonText": "Submit",
+    "hint": "Enter your name",
+    "type": "text-input",
+    "validations": [
+      "notNull"
+    ],
+    "dataKey": "username"
+  },
+  "section": {
+    "label": "Sections",
+    "question": "Select one section",
+    "validations": [
+      "notNull"
+    ],
+    "options": [
+      "SectionOne",
+      "SectionTwo"
+    ],
+    "type": "select-input",
+    "select-type": "single-select",
+    "dataKey": "username"
+  },
+  "category": {
+    "label": "Categories",
+    "question": "Select one category",
+    "validations": [
+      "notNull"
+    ],
+    "options": [
+      "CategoryOne",
+      "CategoryTwo"
+    ],
+    "type": "select-input",
+    "select-type": "single-select",
+    "dataKey": "username"
+  },
+  "occupation-2019": {
+    "label": "Q1",
+    "question": "What’s your occupation in 2019 ?",
+    "options": [
+      "Private",
+      "Government"
+    ],
+    "type": "select-input",
+    "select-type": "multi-select-options",
+    "validations": [
+      "notNull"
+    ],
+    "dataKey": "occupation-2019",
+    "type": "select-input",
+    "select-type": "single-radio-select",
+    "validations": [
+      "notNull"
+    ]
+  },
+  "address-proof-upload": {
+    "label": "Q1",
+    "question": "What’s your occupation in 2019 ?",
+    "buttonText": "Upload",
+    "type": "file-upload",
+    "options": [
+      "Submit"
+    ],
+    "upload": [
+      "Upload Passport Details"
+    ]
+  },
+  "30-percent-ruling-2019": {
+    "label": "Q2",
+    "question": "Did you enjoy 30% Ruling in 2019 ?",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "type": "select-input",
+    "select-type": "single-select",
+    "validations": [
+      "notNull"
+    ]
+  },
+  "own-property-in-netherlands-2019": {
+    "label": "Q3",
+    "question": "Did you own a property in the Netherlands in 2019 ?",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "type": "select-input",
+    "select-type": "single-select",
+    "validations": [
+      "notNull"
+    ]
+  },
+  "buy-property-in-netherlands-2019": {
+    "label": "Q4",
+    "question": "Did you buy this property in 2019 ?",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "type": "select-input",
+    "select-type": "single-select",
+    "validations": [
+      "notNull"
+    ]
+  },
+  "sell-property-in-netherlands-2019": {
+    "label": "Q5",
+    "question": "Did you sell property in the Netherlands in 2019 ?",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "type": "select-input",
+    "select-type": "single-select",
+    "validations": [
+      "notNull"
+    ]
+  },
+  "filing-tax-with-partner": {
+    "label": "Q6",
+    "question": "Are you filing taxes with a partner ?",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "type": "select-input",
+    "select-type": "single-select",
+    "validations": [
+      "notNull"
+    ]
+  },
+  "marital-status": {
+    "label": "Q7",
+    "question": "What’s your marital status ?",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "type": "select-input",
+    "select-type": "single-select",
+    "validations": [
+      "notNull"
+    ]
+  },
+  "have-children": {
+    "label": "Q8",
+    "question": "Do you have children ?",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "type": "select-input",
+    "select-type": "single-select",
+    "validations": [
+      "notNull"
+    ]
+  },
+  "choice-registered-2019": {
+    "label": "Q 2",
+    "question": "Were you registered in NL in 2020",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "type": "select-input",
+    "select-type": "single-select",
+    "validations": [
+      "notNull"
+    ]
+  },
+  "yes-no-married": {
+    "label": "Q 3",
+    "question": "Are you married",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "type": "select-input",
+    "select-type": "single-select",
+    "validations": [
+      "notNull"
+    ]
+  },
+  "d-o-b": {
+    "label": "Q 6",
+    "question": "Choose Date of birth",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "type": "date-picker"
+  },
+  "date-of-application": {
+    "label": "Q 6",
+    "question": "Choose Date of Application",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "type": "date-picker"
+  },
+  "passport-details": {
+    "label": "Q 6",
+    "question": "Upload your passport details",
+    "options": [
+      "Submit"
+    ],
+    "type": "file-upload",
+    "dataKey": "passport-details",
+    "upload": [
+      "Upload Passport Details"
+    ]
+  },
+  "dashboard": {
+    "type": "dashboard"
+  }
+}

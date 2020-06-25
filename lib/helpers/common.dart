@@ -17,7 +17,6 @@ class Serializer {
 
     if (parsedJson.containsKey("data")) {
       return parsedJson["data"] as Map<String, dynamic>;
-      ;
     }
     return parsedJson;
   }
